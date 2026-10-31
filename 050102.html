@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlobalTrade - 고객상담</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/common.css">
+</head>
+<body>
+<!-- 헤더: 로고 / GNB / 검색 / 유틸 -->
+<header class="header">
+  <button class="header-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+  <a href="010101.html" class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2c3 2.8 4.5 6.2 4.5 10S15 19.2 12 22c-3-2.8-4.5-6.2-4.5-10S9 4.8 12 2z"></path></svg>Global<em>Trade</em></a>
+  <nav class="gnb"><a href="010101.html" class="">거래하기</a><a href="020101.html" class="">내자산</a><a href="030101.html" class="">거래내역</a><a href="040101.html" class="">입출금</a><a href="050102.html" class="active">고객센터</a></nav>
+  <div class="header-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg><input type="text" placeholder="종목명 또는 상품코드를 검색하세요."></div>
+  <div class="header-util">
+    <button class="header-alarm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M10 21a2 2 0 0 0 4 0"></path></svg><span class="dot"></span></button>
+    <div class="header-user"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg><span>홍길동님</span> ▾</div>
+    <a href="index.html" class="btn-logout" style="display:inline-flex;align-items:center">로그아웃</a>
+  </div>
+</header>
+<!-- 본문: 사이드바 + 메인 -->
+<div class="layout">
+  <aside class="sidebar">
+    <a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 21v-6h6v6"></path></svg><span>대시보드</span></a><a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg><span>거래하기</span></a><a href="020101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg><span>내자산</span></a><a href="030101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg><span>거래내역</span></a><a href="040101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg><span>입출금</span></a><a href="050102.html" class="active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg><span>고객센터</span></a><a href="060101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg><span>환경설정</span></a>
+    <div class="sidebar-clock">실시간 시세 <span class="live">●</span><strong data-clock>00:00:00</strong></div>
+  </aside>
+  <main class="content">
+
+
+    <!-- 페이지 타이틀 -->
+    <div class="page-head">
+      <div class="tit"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg></span>고객상담 <small>CUSTOMER SUPPORT</small></div>
+      <button class="btn btn-blue" data-modal-open="modal-new"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5v14"></path></svg>새 상담 신청</button>
+      <p class="desc">궁금하신 내용을 문의하시면 신속하고 정확하게 답변드리겠습니다.</p>
+    </div>
+    <!-- 검색 -->
+    <div class="card card-body search-bar">
+      <select class="select" style="width:170px"><option>전체</option><option>미완료</option><option>처리중</option><option>완료</option></select>
+      <input class="input" style="flex:1;min-width:180px" placeholder="제목 또는 내용을 검색하세요.">
+      <button class="btn btn-blue btn-input"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg>검색</button>
+      <button class="btn btn-line btn-input"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg>새로고침</button>
+    </div>
+    <!-- 목록 -->
+    <div class="card">
+      <div class="tbl-wrap"><table class="tbl" style="min-width:720px">
+        <thead><tr><th style="width:70px">번호</th><th class="left">제목</th><th style="width:100px">상태</th><th style="width:150px">등록일</th><th style="width:150px">답변일</th><th style="width:100px">관리</th></tr></thead>
+        <tbody>
+          <tr><td class="muted">16</td><td class="left">해외선물 야간거래 시간 문의드립니다.</td><td><span class="badge badge-red">미완료</span></td><td class="muted">2026-09-11 14:25</td><td class="muted">-</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">15</td><td class="left">입출금 처리 시간이 어떻게 되나요?</td><td><span class="badge badge-blue">처리중</span></td><td class="muted">2026-09-11 12:10</td><td class="muted">-</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">14</td><td class="left">수수료 관련 문의</td><td><span class="badge badge-green">완료</span></td><td class="muted">2026-09-10 16:32</td><td class="muted">2026-09-10 17:05</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">13</td><td class="left">차트 지표 설정 방법이 궁금합니다.</td><td><span class="badge badge-blue">처리중</span></td><td class="muted">2026-09-09 11:05</td><td class="muted">-</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">12</td><td class="left">모바일 앱에서도 거래 가능한가요?</td><td><span class="badge badge-green">완료</span></td><td class="muted">2026-09-08 14:20</td><td class="muted">2026-09-08 15:12</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">11</td><td class="left">증거금 변경 안내 요청</td><td><span class="badge badge-red">미완료</span></td><td class="muted">2026-09-07 09:18</td><td class="muted">-</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">10</td><td class="left">API 연동 관련 상담</td><td><span class="badge badge-green">완료</span></td><td class="muted">2026-09-04 17:35</td><td class="muted">2026-09-04 18:20</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">9</td><td class="left">HTS 접속 오류가 발생합니다.</td><td><span class="badge badge-blue">처리중</span></td><td class="muted">2026-09-03 11:12</td><td class="muted">-</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">8</td><td class="left">해외선물 수수료 할인 여부</td><td><span class="badge badge-green">완료</span></td><td class="muted">2026-08-29 15:44</td><td class="muted">2026-08-29 16:30</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr><tr><td class="muted">7</td><td class="left">계좌 비밀번호 초기화 요청</td><td><span class="badge badge-green">완료</span></td><td class="muted">2026-08-27 10:08</td><td class="muted">2026-08-27 11:05</td><td><button class="btn btn-sm btn-line" data-modal-open="modal-chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>보기</button></td></tr>
+        </tbody>
+      </table></div>
+      <div class="list-foot">
+        <span class="total-count">총 16건</span>
+        <div class="paging"><button>‹</button><button class="active">1</button><button>2</button><button>›</button></div>
+      </div>
+    </div>
+
+    <!-- 모달: 새 상담 신청 -->
+    <div class="modal" id="modal-new">
+      <div class="modal-box">
+        <div class="modal-head">
+          <div class="tit"><span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg></span>새 상담 신청</div>
+          <button class="modal-close" data-modal-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </div>
+        <div class="form-grid">
+          <div class="field"><label>상담 구분 <span class="req">*</span></label><select class="select"><option>선택하세요.</option><option>거래문의</option><option>입출금문의</option><option>시스템문의</option></select></div>
+          <div class="field"><label>제목 <span class="req">*</span></label><input class="input" placeholder="제목을 입력하세요."></div>
+        </div>
+        <div class="field"><label>상세 내용 <span class="req">*</span></label><textarea class="textarea" style="min-height:130px" placeholder="문의하실 내용을 자세히 입력해주세요."></textarea><p class="help" style="text-align:right">0 / 2,000</p></div>
+        <div class="field"><label>첨부파일</label>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px dashed var(--line-dark);border-radius:8px;padding:14px">
+            <div style="font-size:13px;color:var(--muted)">파일을 선택하거나 여기에 드래그하세요.<br><small>이미지, 문서 파일 (최대 10MB, 최대 5개)</small></div>
+            <button class="btn btn-sm btn-gray">파일 선택</button>
+          </div>
+        </div>
+        <div class="btn-pair">
+          <button class="btn btn-gray btn-lg" data-modal-close>취소</button>
+          <button class="btn btn-blue btn-lg" data-modal-close>상담 신청</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모달: 상담 채팅 -->
+    <div class="modal" id="modal-chat">
+      <div class="modal-box">
+        <div class="modal-head">
+          <div class="tit"><span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg></span>상담 채팅</div>
+          <button class="modal-close" data-modal-close><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></button>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+          <div><b style="font-size:15px">입출금 처리 시간이 어떻게 되나요?</b><div class="muted" style="font-size:12px;margin-top:2px">test11 | 2026-09-11 12:10</div></div>
+          <button class="btn btn-sm btn-line" style="color:var(--green);border-color:var(--green)">상담 종료</button>
+        </div>
+        <div class="chat">
+          <div class="msg me"><div class="who">test11</div><div class="sys">새로운 상담이 시작되었습니다.</div><div class="time">2026-08-24 17:22:05</div></div>
+          <div class="msg me"><div class="who">test11</div>안녕하세요<div class="time">2026-08-24 17:22:07</div></div>
+          <div class="msg"><div class="who">관리자</div>안녕하세요, 무엇을 도와드릴까요?<div class="time">2026-08-24 17:22:18</div></div>
+          <div class="msg"><div class="who">관리자</div><span class="blue" style="font-weight:600">상담이 처리중으로 변경되었습니다.</span><div class="time">2026-09-11 10:44:41</div></div>
+          <div class="msg"><div class="who">관리자</div>입출금은 영업일 기준 09:00~16:00에 순차 처리됩니다.<div class="time">2026-09-11 10:44:44</div></div>
+        </div>
+        <div class="chat-input">
+          <button class="header-alarm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></button>
+          <input class="input" placeholder="상담 내용을 입력하세요. (0 / 2,000)">
+          <button class="btn btn-blue">전송</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!-- 하단 시세 티커 -->
+<footer class="ticker">
+  <span class="cap">주요지수</span>
+  <span>NASDAQ <b>19,523.4</b> <span class="up">▲ +132.5 (+0.68%)</span></span>
+  <span>S&amp;P500 <b>5,612.3</b> <span class="up">▲ +24.1 (+0.43%)</span></span>
+  <span>DOW <b>41,253.2</b> <span class="up">▲ +145.6 (+0.35%)</span></span>
+  <span>USD/KRW <b>1,325.40</b> <span class="down">▼ -3.60 (-0.27%)</span></span>
+  <span class="ok">● 정상 연결</span>
+</footer>
+<script src="assets/js/common.js"></script>
+</body>
+</html>
