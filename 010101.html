@@ -3,163 +3,488 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GlobalTrade - 거래하기</title>
+<title>GlobalTrade - 차트주문</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="assets/css/reset.css">
 <link rel="stylesheet" href="assets/css/common.css">
-<template id="__bundler_thumbnail" data-bg-color="#0a1730">
-<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#0a1730"/><g transform="translate(600 360)"><circle r="130" fill="none" stroke="#3d8bfd" stroke-width="14"/><path d="M-130 0h260M0-130c39 36 58 81 58 130s-19 94-58 130c-39-36-58-81-58-130s19-94 58-130z" fill="none" stroke="#3d8bfd" stroke-width="14"/></g><g stroke="#2b7fff" stroke-width="18" stroke-linecap="round"><path d="M300 660v-90"/><path d="M380 660v-160"/><path d="M820 660v-140"/><path d="M900 660v-70"/></g></svg>
-</template>
 </head>
 <body>
-<!-- 헤더: 로고 / GNB / 검색 / 유틸 -->
+<!-- 헤더: 로고 / 검색 / 주요지수 / 유틸 -->
 <header class="header">
-  <button class="header-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
-  <a href="010101.html" class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2c3 2.8 4.5 6.2 4.5 10S15 19.2 12 22c-3-2.8-4.5-6.2-4.5-10S9 4.8 12 2z"></path></svg>Global<em>Trade</em></a>
-  <nav class="gnb"><a href="010101.html" class="active">거래하기</a><a href="020101.html" class="">내자산</a><a href="030101.html" class="">거래내역</a><a href="040101.html" class="">입출금</a><a href="050102.html" class="">고객센터</a></nav>
-  <div class="header-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg><input type="text" placeholder="종목명 또는 상품코드를 검색하세요."></div>
+  <button type="button" class="header-menu" aria-label="메뉴"><i class="icon icon-menu icon-22"></i></button>
+  <a href="010101.html" class="logo">
+    <span class="mark"><i class="icon icon-globe icon-22"></i></span>
+    <span class="txt"><b>Global<em>Trade</em></b><small>Global Markets, Your Trade</small></span>
+  </a>
+  <div class="header-search">
+    <input type="text" placeholder="종목명 또는 코드를 검색하세요.">
+    <button type="button" class="btn-find" aria-label="검색"><i class="icon icon-search icon-17"></i></button>
+  </div>
+  <div class="header-index">
+    <div class="idx idx-up"><span class="nm">KOSPI</span><span class="val">2,671.57 <i>▲ 12.34 (+0.46%)</i></span></div>
+    <div class="idx idx-down"><span class="nm">KOSDAQ</span><span class="val">875.36 <i>▼ 3.21 (-0.37%)</i></span></div>
+    <div class="idx idx-up"><span class="nm">NASDAQ</span><span class="val">17,845.21 <i>▲ 85.63 (+0.48%)</i></span></div>
+  </div>
   <div class="header-util">
-    <button class="header-alarm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M10 21a2 2 0 0 0 4 0"></path></svg><span class="dot"></span></button>
-    <div class="header-user"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg><span>홍길동님</span> ▾</div>
-    <a href="index.html" class="btn-logout" style="display:inline-flex;align-items:center">로그아웃</a>
+    <button type="button" class="header-search-btn" aria-label="검색" aria-expanded="false"><i class="icon icon-search icon-20"></i></button>
+    <!-- 알림 드롭다운 -->
+    <div class="header-dd" data-dd="alarm">
+      <button type="button" class="header-alarm" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="알림"><i class="icon icon-bell icon-20"></i><span class="count-badge">3</span></button>
+      <div class="dd-panel dd-alarm">
+        <div class="dd-head"><strong>알림<em class="count">3</em></strong><button type="button" class="dd-allread">모두 읽음</button></div>
+        <ul class="dd-list">
+          <li class="unread">
+            <span class="dd-tag t-fill">체결</span>
+            <div class="dd-txt"><p>나스닥100 12월물 <b>매수 1계약</b>이 23,418.50에 체결되었습니다.</p><time>2026-09-12 09:31</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-cash">입출금</span>
+            <div class="dd-txt"><p>출금신청 <b>1,000,000원</b>이 정상 처리되었습니다.</p><time>2026-09-12 08:47</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-fill">스탑로스</span>
+            <div class="dd-txt"><p>금 12월물 스탑로스 주문이 <b>발동</b>되었습니다.</p><time>2026-09-11 23:12</time></div>
+          </li>
+          <li>
+            <span class="dd-tag t-notice">공지</span>
+            <div class="dd-txt"><p>추석 연휴 해외선물 거래시간 변경 안내</p><time>2026-09-10 14:00</time></div>
+          </li>
+        </ul>
+        <a href="050101.html" class="dd-foot">알림 전체보기</a>
+      </div>
+    </div>
+    <a href="060101.html" class="header-set" aria-label="환경설정"><i class="icon icon-gear icon-20"></i></a>
+    <!-- 사용자 드롭다운 -->
+    <div class="header-dd" data-dd="user">
+      <button type="button" class="header-user" data-dd-toggle aria-haspopup="true" aria-expanded="false"><i class="icon icon-user icon-20"></i><span>test01</span><i class="caret">▾</i></button>
+      <div class="dd-panel dd-user">
+        <div class="dd-user-top">
+          <span class="dd-avatar"><i class="icon icon-user icon-24"></i></span>
+          <div>
+            <strong>test01<em class="dd-grade">VIP</em></strong>
+            <span>test01@globaltrade.co.kr</span>
+          </div>
+        </div>
+        <dl class="dd-meta">
+          <div><dt>계좌번호</dt><dd>1-007051</dd></div>
+          <div><dt>예탁총액</dt><dd>239,179,010 원</dd></div>
+          <div><dt>평가손익</dt><dd class="up">+1,284,500 원</dd></div>
+          <div><dt>최근접속</dt><dd>2026-09-12 08:54</dd></div>
+        </dl>
+        <div class="dd-links">
+          <a href="020101.html">내자산</a>
+          <a href="030101.html">거래내역</a>
+          <a href="040101.html">입출금</a>
+          <a href="060101.html">환경설정</a>
+        </div>
+        <a href="index.html" class="dd-logout">로그아웃</a>
+      </div>
+    </div>
+    <a href="index.html" class="btn-logout">로그아웃</a>
   </div>
 </header>
 <!-- 본문: 사이드바 + 메인 -->
 <div class="layout">
   <aside class="sidebar">
-    <a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 21v-6h6v6"></path></svg><span>대시보드</span></a><a href="010101.html" class="active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg><span>거래하기</span></a><a href="020101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg><span>내자산</span></a><a href="030101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg><span>거래내역</span></a><a href="040101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg><span>입출금</span></a><a href="050102.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg><span>고객센터</span></a><a href="060101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg><span>환경설정</span></a>
-    <div class="sidebar-clock">실시간 시세 <span class="live">●</span><strong data-clock>00:00:00</strong></div>
+    <nav class="side-nav">
+      <a href="010101.html" class="active"><i class="icon icon-check-box icon-18"></i><span>거래하기</span></a>
+      <a href="020101.html"><i class="icon icon-wallet icon-18"></i><span>내자산</span></a>
+      <a href="030101.html"><i class="icon icon-file icon-18"></i><span>거래내역</span></a>
+      <a href="040101.html"><i class="icon icon-swap icon-18"></i><span>입출금</span></a>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-user-box icon-18"></i><span>파생주문</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="010101.html">거래하기</a>
+          <a href="010101.html">차트주문</a>
+        </div>
+      </div>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-pen-box icon-18"></i><span>입출금신청</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금신청</a>
+          <a href="040102.html">출금신청</a>
+          <a href="040103.html">이체신청</a>
+        </div>
+      </div>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-list icon-18"></i><span>입출금내역</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금내역</a>
+          <a href="040102.html">출금내역</a>
+          <a href="040103.html">이체내역</a>
+        </div>
+      </div>
+      <a href="030101.html"><i class="icon icon-clipboard icon-18"></i><span>주문내역</span></a>
+      <a href="030201.html"><i class="icon icon-bar-chart icon-18"></i><span>일별손익</span></a>
+      <a href="050101.html"><i class="icon icon-bell icon-18"></i><span>공지사항</span></a>
+      <a href="070101.html"><i class="icon icon-chart icon-18"></i><span>차트</span></a>
+      <a href="050102.html"><i class="icon icon-chat icon-18"></i><span>고객상담</span></a>
+      <a href="060101.html"><i class="icon icon-gear icon-18"></i><span>설정</span></a>
+    </nav>
+    <a href="010101.html" class="side-promo">
+      <b>Global<em>Trade</em></b>
+      <span class="en">Trade Beyond Borders</span>
+      <span class="ko">세상을 잇는 글로벌 투자 플랫폼</span>
+    </a>
   </aside>
   <main class="content">
 
-    <!-- 요약 KPI -->
-    <div class="summary-cards">
-      <div class="summary-card"><div class="row1"><span class="ico c1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg></span><span class="label">예탁금</span><span class="val">12,313</span></div><div class="sub"><span>사용가능 <b>12,313</b></span><span>주문증거금 <b>0</b></span><span>인출가능 <b>12,313</b></span></div></div>
-      <div class="summary-card"><div class="row1"><span class="ico c2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3 8-10V5l-8-3-8 3v7c0 7 8 10 8 10z"></path></svg></span><span class="label">로스컷</span><span class="val">100,000</span></div><div class="sub"><span>로스컷여유 <b class="up">100,000</b></span></div></div>
-      <div class="summary-card"><div class="row1"><span class="ico c3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m8 15 3-4 3 2 4-6"></path></svg></span><span class="label">실현손익</span><span class="val up">1,513</span></div><div class="sub"><span>당일 <b class="up">1,513</b></span><span>누적 <b>25,340</b></span></div></div>
-      <div class="summary-card"><div class="row1"><span class="ico c4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-12h-7l1-8z"></path></svg></span><span class="label">실시간손익</span><span class="val up">5,154</span></div><div class="sub"><span>평가손익 <b class="up">5,154</b></span><span>수익률 <b class="up">+3.21%</b></span></div></div>
-    </div>
+    <div class="screen-grid screen-grid3">
 
-    <!-- 종목 요약 -->
-    <div class="card stock-summary">
-      <div>
-        <div class="name">E-MINI NASDAQ 100 <small>(NQH26 26-03)</small> ☆</div>
-        <div class="price up" style="margin-top:4px">4,599.7 <span style="font-size:14px">▲ +32.5 (+0.71%)</span></div>
-      </div>
-      <div class="ohlc"><span>전일 <b>4,567.2</b></span><span>시가 <b class="up">4,572.0</b></span><span>고가 <b class="up">4,603.5</b></span><span>저가 <b class="down">4,559.0</b></span><span>거래량 <b>245,632</b></span></div>
-      <div class="acts"><button class="btn btn-line-blue"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m8 15 3-4 3 2 4-6"></path></svg>차트보기</button><button class="btn btn-blue">상품선택 ▾</button></div>
-    </div>
-
-    <!-- 3단: 호가 / 주문 / 보유·공지 -->
-    <div class="trade-grid">
-      <!-- 호가/체결/시세/차트 -->
-      <div class="card col-hoga" data-tab-group="trade">
-        <div class="tab-menu">
-          <button data-tab="hoga" class="active">호가</button>
-          <button data-tab="che">체결</button>
-          <button data-tab="sise">시세</button>
-          <button data-tab="chart">차트</button>
+      <!-- 관심종목 -->
+      <div class="card watch-col">
+        <div class="watch-search">
+          <input type="text" placeholder="종목명 또는 코드를 검색하세요.">
+          <button type="button" class="btn-find" aria-label="검색"><i class="icon icon-search icon-14"></i></button>
         </div>
-        <div style="padding:10px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">고정 <span style="background:var(--blue);color:#fff;border-radius:11px;padding:2px 10px;font-size:11px">ON</span></div>
-        <div data-panel-group="trade" data-panel="hoga" class="tab-panel active">
-<table class="hoga-tbl">
-  <thead><tr><th>매도수량</th><th>매도가</th><th>매수호가</th><th>매수수량</th></tr></thead>
-  <tbody>
-    <tr><td class="ask-q">11</td><td class="ask-p">4,603.5</td><td></td><td></td></tr><tr><td class="ask-q">8</td><td class="ask-p">4,603.0</td><td></td><td></td></tr><tr><td class="ask-q">12</td><td class="ask-p">4,602.5</td><td></td><td></td></tr><tr><td class="ask-q">9</td><td class="ask-p">4,602.0</td><td></td><td></td></tr><tr><td class="ask-q">15</td><td class="ask-p">4,601.5</td><td></td><td></td></tr><tr><td class="ask-q">7</td><td class="ask-p">4,601.0</td><td></td><td></td></tr>
-    <tr class="hoga-cur"><td colspan="4"><div class="cur">4,599.7 →</div></td></tr>
-    <tr><td></td><td></td><td class="down" style="font-weight:700">4,599.2</td><td class="bid-q">10</td></tr><tr><td></td><td></td><td class="down" style="font-weight:700">4,598.8</td><td class="bid-q">8</td></tr><tr><td></td><td></td><td class="down" style="font-weight:700">4,598.6</td><td class="bid-q">14</td></tr><tr><td></td><td></td><td class="down" style="font-weight:700">4,598.5</td><td class="bid-q">9</td></tr><tr><td></td><td></td><td class="down" style="font-weight:700">4,598.2</td><td class="bid-q">12</td></tr><tr><td></td><td></td><td class="down" style="font-weight:700">4,598.0</td><td class="bid-q">7</td></tr>
-  </tbody>
-</table>
-<div class="hoga-foot"><div><span>매도잔량</span><b>62</b></div><div><span>매수잔량</span><b>60</b></div></div></div>
-        <div data-panel-group="trade" data-panel="che" class="tab-panel">
-<div class="tbl-wrap"><table class="tbl">
-  <thead><tr><th>시간</th><th>체결가</th><th>체결량</th></tr></thead>
-  <tbody><tr><td class="muted">15:23:12</td><td class="up" style="font-weight:700">4,599.7</td><td>3</td></tr><tr><td class="muted">15:23:10</td><td class="down" style="font-weight:700">4,599.5</td><td>1</td></tr><tr><td class="muted">15:23:08</td><td class="up" style="font-weight:700">4,599.7</td><td>2</td></tr><tr><td class="muted">15:23:05</td><td class="down" style="font-weight:700">4,599.2</td><td>5</td></tr><tr><td class="muted">15:23:01</td><td class="up" style="font-weight:700">4,599.7</td><td>1</td></tr><tr><td class="muted">15:22:58</td><td class="up" style="font-weight:700">4,600.0</td><td>4</td></tr><tr><td class="muted">15:22:55</td><td class="down" style="font-weight:700">4,599.5</td><td>2</td></tr><tr><td class="muted">15:22:51</td><td class="up" style="font-weight:700">4,599.7</td><td>1</td></tr></tbody>
-</table></div></div>
-        <div data-panel-group="trade" data-panel="sise" class="tab-panel">
-<div class="tbl-wrap"><table class="tbl">
-  <thead><tr><th>구분</th><th>값</th><th>구분</th><th>값</th></tr></thead>
-  <tbody>
-    <tr><td class="muted">전일</td><td><b>4,567.2</b></td><td class="muted">시가</td><td class="up"><b>4,572.0</b></td></tr>
-    <tr><td class="muted">고가</td><td class="up"><b>4,603.5</b></td><td class="muted">저가</td><td class="down"><b>4,559.0</b></td></tr>
-    <tr><td class="muted">거래량</td><td><b>245,632</b></td><td class="muted">등락률</td><td class="up"><b>+0.71%</b></td></tr>
-  </tbody>
-</table></div></div>
-        <div data-panel-group="trade" data-panel="chart" class="tab-panel"><div style="padding:10px"><svg viewBox="0 0 900 320" style="width:100%;display:block"><line x1="0" x2="900" y1="10" y2="10" stroke="#eef2f8"/><line x1="0" x2="900" y1="62.8" y2="62.8" stroke="#eef2f8"/><line x1="0" x2="900" y1="115.6" y2="115.6" stroke="#eef2f8"/><line x1="0" x2="900" y1="168.4" y2="168.4" stroke="#eef2f8"/><line x1="0" x2="900" y1="221.2" y2="221.2" stroke="#eef2f8"/><line x1="0" x2="900" y1="274" y2="274" stroke="#eef2f8"/><line x1="8.035714285714286" x2="8.035714285714286" y1="233.2318957511912" y2="261.85878914277885" stroke="#e5484d"/><rect x="2.8928571428571432" width="10.285714285714286" y="248.16224938726418" height="8.15040569958444" fill="#e5484d" stroke="#e5484d"/><rect x="2.8928571428571432" width="10.285714285714286" y="291.68" height="22.32" fill="#e5484d" opacity="0.4"/><line x1="24.10714285714286" x2="24.10714285714286" y1="227.80632982691162" y2="253.326584359634" stroke="#e5484d"/><rect x="18.96428571428572" width="10.285714285714286" y="239.24020764511556" height="8.922041742148622" fill="#e5484d" stroke="#e5484d"/><rect x="18.96428571428572" width="10.285714285714286" y="297.344" height="16.656" fill="#e5484d" opacity="0.4"/><line x1="40.17857142857143" x2="40.17857142857143" y1="212.20883252903832" y2="256.7828708002862" stroke="#e5484d"/><rect x="35.035714285714285" width="10.285714285714286" y="223.42166877254942" height="15.818538872566137" fill="#e5484d" stroke="#e5484d"/><rect x="35.035714285714285" width="10.285714285714286" y="294.032" height="19.968" fill="#e5484d" opacity="0.4"/><line x1="56.25000000000001" x2="56.25000000000001" y1="207.62724352631335" y2="246.96460594620106" stroke="#1a6dff"/><rect x="51.10714285714286" width="10.285714285714286" y="223.42166877254942" height="19.24267381144486" fill="#fff" stroke="#1a6dff"/><rect x="51.10714285714286" width="10.285714285714286" y="286.976" height="27.024" fill="#1a6dff" opacity="0.4"/><line x1="72.32142857142858" x2="72.32142857142858" y1="236.75650413311206" y2="274" stroke="#1a6dff"/><rect x="67.17857142857144" width="10.285714285714286" y="242.66434258399428" height="13.069585470931202" fill="#fff" stroke="#1a6dff"/><rect x="67.17857142857144" width="10.285714285714286" y="295.016" height="18.984" fill="#1a6dff" opacity="0.4"/><line x1="88.39285714285715" x2="88.39285714285715" y1="236.82482607438078" y2="257.8036809815951" stroke="#e5484d"/><rect x="83.25000000000001" width="10.285714285714286" y="250.9112027888992" height="4.822725266026282" fill="#e5484d" stroke="#e5484d"/><rect x="83.25000000000001" width="10.285714285714286" y="295.544" height="18.456" fill="#e5484d" opacity="0.4"/><line x1="104.46428571428574" x2="104.46428571428574" y1="240.0922224421136" y2="267.5295102680814" stroke="#e5484d"/><rect x="99.3214285714286" width="10.285714285714286" y="245.79911400691137" height="5.112088781987836" fill="#e5484d" stroke="#e5484d"/><rect x="99.3214285714286" width="10.285714285714286" y="286.20799999999997" height="27.792" fill="#e5484d" opacity="0.4"/><line x1="120.5357142857143" x2="120.5357142857143" y1="232.71747172281508" y2="250.15966143494347" stroke="#e5484d"/><rect x="115.39285714285717" width="10.285714285714286" y="240.25297995098114" height="5.546134055930224" fill="#e5484d" stroke="#e5484d"/><rect x="115.39285714285717" width="10.285714285714286" y="287.936" height="26.064" fill="#e5484d" opacity="0.4"/><line x1="136.60714285714286" x2="136.60714285714286" y1="218.51052687664603" y2="254.178599156632" stroke="#e5484d"/><rect x="131.46428571428572" width="10.285714285714286" y="230.3663931556273" height="9.88658679535385" fill="#e5484d" stroke="#e5484d"/><rect x="131.46428571428572" width="10.285714285714286" y="303.128" height="10.872" fill="#e5484d" opacity="0.4"/><line x1="152.67857142857144" x2="152.67857142857144" y1="221.96681331729815" y2="251.46179725677055" stroke="#1a6dff"/><rect x="147.5357142857143" width="10.285714285714286" y="230.3663931556273" height="5.883724824552047" fill="#fff" stroke="#1a6dff"/><rect x="147.5357142857143" width="10.285714285714286" y="305.288" height="8.712" fill="#1a6dff" opacity="0.4"/><line x1="168.75" x2="168.75" y1="209.97028421805783" y2="255.07884120629024" stroke="#e5484d"/><rect x="163.60714285714286" width="10.285714285714286" y="220.96207888687604" height="15.288039093303297" fill="#e5484d" stroke="#e5484d"/><rect x="163.60714285714286" width="10.285714285714286" y="304.976" height="9.024000000000001" fill="#e5484d" opacity="0.4"/><line x1="184.82142857142858" x2="184.82142857142858" y1="193.46048805736118" y2="223.71505122623273" stroke="#e5484d"/><rect x="179.67857142857144" width="10.285714285714286" y="202.2016776020338" height="18.76040128484223" fill="#e5484d" stroke="#e5484d"/><rect x="179.67857142857144" width="10.285714285714286" y="291.488" height="22.512" fill="#e5484d" opacity="0.4"/><line x1="200.89285714285717" x2="200.89285714285717" y1="185.96516920641199" y2="216.00672867603402" stroke="#1a6dff"/><rect x="195.75000000000003" width="10.285714285714286" y="202.2016776020338" height="10.368859321956506" fill="#fff" stroke="#1a6dff"/><rect x="195.75000000000003" width="10.285714285714286" y="298.376" height="15.624" fill="#1a6dff" opacity="0.4"/><line x1="216.96428571428572" x2="216.96428571428572" y1="210.1189849137603" y2="230.39050678195744" stroke="#1a6dff"/><rect x="211.82142857142858" width="10.285714285714286" y="212.57053692399032" height="2" fill="#fff" stroke="#1a6dff"/><rect x="211.82142857142858" width="10.285714285714286" y="294.128" height="19.872" fill="#1a6dff" opacity="0.4"/><line x1="233.0357142857143" x2="233.0357142857143" y1="209.78541308286015" y2="230.08908645283077" stroke="#e5484d"/><rect x="227.89285714285717" width="10.285714285714286" y="212.13649165004796" height="2" fill="#e5484d" stroke="#e5484d"/><rect x="227.89285714285717" width="10.285714285714286" y="291.944" height="22.056" fill="#e5484d" opacity="0.4"/><line x1="249.10714285714286" x2="249.10714285714286" y1="211.97573414118045" y2="240.08820350439194" stroke="#1a6dff"/><rect x="243.96428571428572" width="10.285714285714286" y="212.13649165004796" height="12.780221954969647" fill="#fff" stroke="#1a6dff"/><rect x="243.96428571428572" width="10.285714285714286" y="286.616" height="27.384" fill="#1a6dff" opacity="0.4"/><line x1="265.17857142857144" x2="265.17857142857144" y1="202.56338199698584" y2="240.4298132107355" stroke="#e5484d"/><rect x="260.0357142857143" width="10.285714285714286" y="213.77621824049695" height="11.14049536452066" fill="#e5484d" stroke="#e5484d"/><rect x="260.0357142857143" width="10.285714285714286" y="304.616" height="9.384" fill="#e5484d" opacity="0.4"/><line x1="281.25" x2="281.25" y1="207.5669594604881" y2="249.96675242430248" stroke="#1a6dff"/><rect x="276.10714285714283" width="10.285714285714286" y="213.77621824049695" height="16.87953843109196" fill="#fff" stroke="#1a6dff"/><rect x="276.10714285714283" width="10.285714285714286" y="306.848" height="7.152" fill="#1a6dff" opacity="0.4"/><line x1="297.3214285714286" x2="297.3214285714286" y1="214.9216154911782" y2="254.00980377232116" stroke="#1a6dff"/><rect x="292.17857142857144" width="10.285714285714286" y="230.6557566715889" height="4.7262707607057735" fill="#fff" stroke="#1a6dff"/><rect x="292.17857142857144" width="10.285714285714286" y="286.784" height="27.216" fill="#1a6dff" opacity="0.4"/><line x1="313.39285714285717" x2="313.39285714285717" y1="218.2613527379014" y2="241.83242247560483" stroke="#e5484d"/><rect x="308.25" width="10.285714285714286" y="234.89975490569205" height="2" fill="#e5484d" stroke="#e5484d"/><rect x="308.25" width="10.285714285714286" y="300.488" height="13.512" fill="#e5484d" opacity="0.4"/><line x1="329.4642857142857" x2="329.4642857142857" y1="220.41148441900478" y2="267.8791578498684" stroke="#1a6dff"/><rect x="324.32142857142856" width="10.285714285714286" y="234.89975490569205" height="14.853993819360937" fill="#fff" stroke="#1a6dff"/><rect x="324.32142857142856" width="10.285714285714286" y="290.864" height="23.136" fill="#1a6dff" opacity="0.4"/><line x1="345.53571428571433" x2="345.53571428571433" y1="216.1835619357884" y2="250.35658938330624" stroke="#e5484d"/><rect x="340.39285714285717" width="10.285714285714286" y="230.75221117690947" height="19.001537548143517" fill="#e5484d" stroke="#e5484d"/><rect x="340.39285714285717" width="10.285714285714286" y="306.608" height="7.392" fill="#e5484d" opacity="0.4"/><line x1="361.6071428571429" x2="361.6071428571429" y1="213.55115772808242" y2="258.98926760949325" stroke="#1a6dff"/><rect x="356.4642857142857" width="10.285714285714286" y="230.75221117690947" height="13.889448766155681" fill="#fff" stroke="#1a6dff"/><rect x="356.4642857142857" width="10.285714285714286" y="306.392" height="7.6080000000000005" fill="#1a6dff" opacity="0.4"/><line x1="377.67857142857144" x2="377.67857142857144" y1="239.26834020916755" y2="256.15591651570287" stroke="#e5484d"/><rect x="372.5357142857143" width="10.285714285714286" y="242.18207005739174" height="2.4595898856734095" fill="#e5484d" stroke="#e5484d"/><rect x="372.5357142857143" width="10.285714285714286" y="287.96" height="26.04" fill="#e5484d" opacity="0.4"/><line x1="393.75000000000006" x2="393.75000000000006" y1="222.64601379226366" y2="244.47286455875422" stroke="#e5484d"/><rect x="388.6071428571429" width="10.285714285714286" y="226.84580371142818" height="15.336266345963566" fill="#e5484d" stroke="#e5484d"/><rect x="388.6071428571429" width="10.285714285714286" y="294.632" height="19.368000000000002" fill="#e5484d" opacity="0.4"/><line x1="409.8214285714286" x2="409.8214285714286" y1="202.25392379241583" y2="241.95700954497718" stroke="#e5484d"/><rect x="404.67857142857144" width="10.285714285714286" y="213.48685472453536" height="13.358948986892813" fill="#e5484d" stroke="#e5484d"/><rect x="404.67857142857144" width="10.285714285714286" y="303.92" height="10.08" fill="#e5484d" opacity="0.4"/><line x1="425.89285714285717" x2="425.89285714285717" y1="191.94534853628468" y2="224.94082723134778" stroke="#e5484d"/><rect x="420.75" width="10.285714285714286" y="200.94776903286706" height="12.539085691668305" fill="#e5484d" stroke="#e5484d"/><rect x="420.75" width="10.285714285714286" y="304.64" height="9.36" fill="#e5484d" opacity="0.4"/><line x1="441.9642857142857" x2="441.9642857142857" y1="184.2651585501378" y2="219.41478786402604" stroke="#e5484d"/><rect x="436.82142857142856" width="10.285714285714286" y="192.3633180593403" height="8.58445097352677" fill="#e5484d" stroke="#e5484d"/><rect x="436.82142857142856" width="10.285714285714286" y="288.872" height="25.128" fill="#e5484d" opacity="0.4"/><line x1="458.03571428571433" x2="458.03571428571433" y1="164.35534107689264" y2="202.4106623635617" stroke="#e5484d"/><rect x="452.89285714285717" width="10.285714285714286" y="179.96891412565273" height="12.394403933687556" fill="#e5484d" stroke="#e5484d"/><rect x="452.89285714285717" width="10.285714285714286" y="298.112" height="15.888" fill="#e5484d" opacity="0.4"/><line x1="474.1071428571429" x2="474.1071428571429" y1="168.99319520772124" y2="184.0682306017751" stroke="#e5484d"/><rect x="468.9642857142857" width="10.285714285714286" y="174.51923457504304" height="5.449679550609687" fill="#e5484d" stroke="#e5484d"/><rect x="468.9642857142857" width="10.285714285714286" y="296.264" height="17.736" fill="#e5484d" opacity="0.4"/><line x1="490.17857142857144" x2="490.17857142857144" y1="154.0105953812663" y2="179.36205452967775" stroke="#e5484d"/><rect x="485.0357142857143" width="10.285714285714286" y="165.40428382225335" height="9.114950752789696" fill="#e5484d" stroke="#e5484d"/><rect x="485.0357142857143" width="10.285714285714286" y="288.512" height="25.488" fill="#e5484d" opacity="0.4"/><line x1="506.25000000000006" x2="506.25000000000006" y1="151.820274322946" y2="191.9252538476762" stroke="#1a6dff"/><rect x="501.1071428571429" width="10.285714285714286" y="165.40428382225335" height="11.912131407084928" fill="#fff" stroke="#1a6dff"/><rect x="501.1071428571429" width="10.285714285714286" y="288.104" height="25.896" fill="#1a6dff" opacity="0.4"/><line x1="522.3214285714287" x2="522.3214285714287" y1="163.3465877087488" y2="185.73608975627582" stroke="#e5484d"/><rect x="517.1785714285716" width="10.285714285714286" y="165.83832909619574" height="11.47808613314254" fill="#e5484d" stroke="#e5484d"/><rect x="517.1785714285716" width="10.285714285714286" y="305.12" height="8.879999999999999" fill="#e5484d" opacity="0.4"/><line x1="538.3928571428572" x2="538.3928571428572" y1="143.1795582213156" y2="172.6303338458494" stroke="#e5484d"/><rect x="533.2500000000001" width="10.285714285714286" y="154.55315197369424" height="11.285177122501494" fill="#e5484d" stroke="#e5484d"/><rect x="533.2500000000001" width="10.285714285714286" y="296.552" height="17.448" fill="#e5484d" opacity="0.4"/><line x1="554.4642857142858" x2="554.4642857142858" y1="135.9816407617714" y2="160.82269481952838" stroke="#e5484d"/><rect x="549.3214285714287" width="10.285714285714286" y="138.97574936442936" height="15.57740260926488" fill="#e5484d" stroke="#e5484d"/><rect x="549.3214285714287" width="10.285714285714286" y="287.744" height="26.256" fill="#e5484d" opacity="0.4"/><line x1="570.5357142857143" x2="570.5357142857143" y1="117.77183394480048" y2="154.62951179040633" stroke="#e5484d"/><rect x="565.3928571428572" width="10.285714285714286" y="117.85221269923424" height="21.123536665195118" fill="#e5484d" stroke="#e5484d"/><rect x="565.3928571428572" width="10.285714285714286" y="286.64" height="27.36" fill="#e5484d" opacity="0.4"/><line x1="586.607142857143" x2="586.607142857143" y1="110.07556820776688" y2="143.01478177472634" stroke="#1a6dff"/><rect x="581.4642857142859" width="10.285714285714286" y="117.85221269923424" height="17.506492715675407" fill="#fff" stroke="#1a6dff"/><rect x="581.4642857142859" width="10.285714285714286" y="293.384" height="20.616" fill="#1a6dff" opacity="0.4"/><line x1="602.6785714285716" x2="602.6785714285716" y1="129.85276073619627" y2="146.97745436831127" stroke="#1a6dff"/><rect x="597.5357142857144" width="10.285714285714286" y="135.35870541490965" height="4.726270760705745" fill="#fff" stroke="#1a6dff"/><rect x="597.5357142857144" width="10.285714285714286" y="298.136" height="15.863999999999999" fill="#1a6dff" opacity="0.4"/><line x1="618.7500000000001" x2="618.7500000000001" y1="104.80272191691152" y2="147.05783312274505" stroke="#e5484d"/><rect x="613.607142857143" width="10.285714285714286" y="121.90330192269634" height="18.181674252919052" fill="#e5484d" stroke="#e5484d"/><rect x="613.607142857143" width="10.285714285714286" y="284.096" height="29.904" fill="#e5484d" opacity="0.4"/><line x1="634.8214285714287" x2="634.8214285714287" y1="111.03207538552878" y2="155.77490904108757" stroke="#1a6dff"/><rect x="629.6785714285716" width="10.285714285714286" y="121.90330192269634" height="16.107902388527762" fill="#fff" stroke="#1a6dff"/><rect x="629.6785714285716" width="10.285714285714286" y="301.04" height="12.959999999999999" fill="#1a6dff" opacity="0.4"/><line x1="650.8928571428572" x2="650.8928571428572" y1="116.55007687740722" y2="141.1861651113581" stroke="#e5484d"/><rect x="645.7500000000001" width="10.285714285714286" y="121.61393840673479" height="16.397265904489316" fill="#e5484d" stroke="#e5484d"/><rect x="645.7500000000001" width="10.285714285714286" y="291.608" height="22.392000000000003" fill="#e5484d" opacity="0.4"/><line x1="666.9642857142858" x2="666.9642857142858" y1="92.64141637108193" y2="125.39173986512203" stroke="#e5484d"/><rect x="661.8214285714287" width="10.285714285714286" y="108.0138531565407" height="13.600085250194084" fill="#e5484d" stroke="#e5484d"/><rect x="661.8214285714287" width="10.285714285714286" y="296.36" height="17.64" fill="#e5484d" opacity="0.4"/><line x1="683.0357142857144" x2="683.0357142857144" y1="86.0583963829561" y2="115.95125515687563" stroke="#e5484d"/><rect x="677.8928571428573" width="10.285714285714286" y="87.32436176528799" height="20.689491391252716" fill="#e5484d" stroke="#e5484d"/><rect x="677.8928571428573" width="10.285714285714286" y="301.208" height="12.792" fill="#e5484d" opacity="0.4"/><line x1="699.107142857143" x2="699.107142857143" y1="73.0169434760767" y2="108.68501575606271" stroke="#1a6dff"/><rect x="693.9642857142859" width="10.285714285714286" y="87.32436176528799" height="2" fill="#fff" stroke="#1a6dff"/><rect x="693.9642857142859" width="10.285714285714286" y="285.272" height="28.727999999999998" fill="#1a6dff" opacity="0.4"/><line x1="715.1785714285716" x2="715.1785714285716" y1="60.14026701578652" y2="90.76055351733173" stroke="#e5484d"/><rect x="710.0357142857144" width="10.285714285714286" y="67.69586993256104" height="21.557581939137478" fill="#e5484d" stroke="#e5484d"/><rect x="710.0357142857144" width="10.285714285714286" y="287.984" height="26.016" fill="#e5484d" opacity="0.4"/><line x1="731.2500000000001" x2="731.2500000000001" y1="49.1283776583599" y2="75.7699158154334" stroke="#1a6dff"/><rect x="726.107142857143" width="10.285714285714286" y="67.69586993256104" height="2" fill="#fff" stroke="#1a6dff"/><rect x="726.107142857143" width="10.285714285714286" y="302.36" height="11.64" fill="#1a6dff" opacity="0.4"/><line x1="747.3214285714287" x2="747.3214285714287" y1="67.55118817458023" y2="97.78163771712164" stroke="#1a6dff"/><rect x="742.1785714285716" width="10.285714285714286" y="68.99800575438815" height="17.892310736957484" fill="#fff" stroke="#1a6dff"/><rect x="742.1785714285716" width="10.285714285714286" y="289.952" height="24.048000000000002" fill="#1a6dff" opacity="0.4"/><line x1="763.3928571428572" x2="763.3928571428572" y1="60.42561159402645" y2="102.00152232489462" stroke="#e5484d"/><rect x="758.2500000000001" width="10.285714285714286" y="64.94691653092607" height="21.943399960419555" fill="#e5484d" stroke="#e5484d"/><rect x="758.2500000000001" width="10.285714285714286" y="302.192" height="11.808" fill="#e5484d" opacity="0.4"/><line x1="779.4642857142859" x2="779.4642857142859" y1="60.20457001933356" y2="77.00372969599178" stroke="#1a6dff"/><rect x="774.3214285714288" width="10.285714285714286" y="64.94691653092607" height="2.411362633013141" fill="#fff" stroke="#1a6dff"/><rect x="774.3214285714288" width="10.285714285714286" y="297.896" height="16.104" fill="#1a6dff" opacity="0.4"/><line x1="795.5357142857144" x2="795.5357142857144" y1="37.320738632038925" y2="69.38784271339195" stroke="#e5484d"/><rect x="790.3928571428573" width="10.285714285714286" y="51.34683128073198" height="16.011447883207232" fill="#e5484d" stroke="#e5484d"/><rect x="790.3928571428573" width="10.285714285714286" y="306.776" height="7.224" fill="#e5484d" opacity="0.4"/><line x1="811.607142857143" x2="811.607142857143" y1="16.719663870663307" y2="64.70979920534646" stroke="#e5484d"/><rect x="806.4642857142859" width="10.285714285714286" y="32.87579351185134" height="18.47103776888064" fill="#e5484d" stroke="#e5484d"/><rect x="806.4642857142859" width="10.285714285714286" y="305.792" height="8.208" fill="#e5484d" opacity="0.4"/><line x1="827.6785714285716" x2="827.6785714285716" y1="10" y2="52.427925527866236" stroke="#e5484d"/><rect x="822.5357142857144" width="10.285714285714286" y="27.76370472986346" height="5.112088781987882" fill="#e5484d" stroke="#e5484d"/><rect x="822.5357142857144" width="10.285714285714286" y="299" height="15" fill="#e5484d" opacity="0.4"/><line x1="843.7500000000001" x2="843.7500000000001" y1="13.05439266848333" y2="64.81429158611033" stroke="#1a6dff"/><rect x="838.607142857143" width="10.285714285714286" y="27.76370472986346" height="22.039854465740095" fill="#fff" stroke="#1a6dff"/><rect x="838.607142857143" width="10.285714285714286" y="296.888" height="17.112000000000002" fill="#1a6dff" opacity="0.4"/><line x1="859.8214285714287" x2="859.8214285714287" y1="37.4493446391329" y2="61.88046704927769" stroke="#e5484d"/><rect x="854.6785714285716" width="10.285714285714286" y="41.74960800133964" height="8.053951194263917" fill="#e5484d" stroke="#e5484d"/><rect x="854.6785714285716" width="10.285714285714286" y="304.76" height="9.24" fill="#e5484d" opacity="0.4"/><line x1="875.8928571428572" x2="875.8928571428572" y1="26.81925436526662" y2="59.13553258536436" stroke="#1a6dff"/><rect x="870.7500000000001" width="10.285714285714286" y="41.74960800133964" height="4.002861970801803" fill="#fff" stroke="#1a6dff"/><rect x="870.7500000000001" width="10.285714285714286" y="307.424" height="6.5760000000000005" fill="#1a6dff" opacity="0.4"/><line x1="891.9642857142859" x2="891.9642857142859" y1="26.533909787026737" y2="63.99844722860752" stroke="#e5484d"/><rect x="886.8214285714288" width="10.285714285714286" y="31.477203184703658" height="14.275266787437783" fill="#e5484d" stroke="#e5484d"/><rect x="886.8214285714288" width="10.285714285714286" y="297.632" height="16.368000000000002" fill="#e5484d" opacity="0.4"/></svg></div></div>
+        <div class="watch-tabs" data-tab-group="watch">
+          <button type="button" class="active" data-tab="fav">관심종목</button>
+          <button type="button" data-tab="recent">최근조회</button>
+          <button type="button" data-tab="hold">보유종목</button>
+        </div>
+        <div class="watch-head"><span>종목명</span><span>현재가</span><span>등락률</span></div>
+        <div class="tab-panel watch-list active" data-panel-group="watch" data-panel="fav">
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 호주달러 (2026.09)</span><b class="up">0.71645</b><b class="chg up">+0.07%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 유로달러 (2026.09)</span><b class="up">1.08235</b><b class="chg up">+0.12%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 엔달러 (2026.09)</span><b class="down">0.00684</b><b class="chg down">−0.15%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 파운드달러 (2026.09)</span><b class="up">1.29560</b><b class="chg up">+0.03%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 크루드오일 (2026.10)</span><b class="down">78.52</b><b class="chg down">−1.24%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 천연가스 (2026.10)</span><b class="up">2.685</b><b class="chg up">+0.52%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 금 (2026.12)</span><b class="up">2,450.8</b><b class="chg up">+0.28%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 은 (2026.12)</span><b class="down">28.715</b><b class="chg down">−0.11%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 코스피200 (2026.09)</span><b class="up">392.15</b><b class="chg up">+0.64%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 나스닥100 (2026.09)</span><b class="up">19,845.25</b><b class="chg up">+0.32%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> S&amp;P500 (2026.09)</span><b class="up">5,612.75</b><b class="chg up">+0.41%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 항생지수 (2026.09)</span><b class="up">17,845</b><b class="chg up">+0.21%</b></a>
+        </div>
+        <div class="tab-panel watch-list" data-panel-group="watch" data-panel="recent">
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 호주달러 (2026.09)</span><b class="up">0.71645</b><b class="chg up">+0.07%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 나스닥100 (2026.09)</span><b class="up">19,845.25</b><b class="chg up">+0.32%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 금 (2026.12)</span><b class="up">2,450.8</b><b class="chg up">+0.28%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 크루드오일 (2026.10)</span><b class="down">78.52</b><b class="chg down">−1.24%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star on">★</i> 유로달러 (2026.09)</span><b class="up">1.08235</b><b class="chg up">+0.12%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 코스피200 (2026.09)</span><b class="up">392.15</b><b class="chg up">+0.64%</b></a>
+        </div>
+        <div class="tab-panel watch-list" data-panel-group="watch" data-panel="hold">
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> 나스닥100 (2026.09)</span><b class="up">19,845.25</b><b class="chg up">+0.32%</b></a>
+          <a href="#stock" class="watch-row"><span class="nm"><i class="star">★</i> S&amp;P500 (2026.09)</span><b class="up">5,612.75</b><b class="chg up">+0.41%</b></a>
+        </div>
       </div>
 
-      <!-- 주문 패널 -->
-      <div class="card col-order">
-        <div class="tab-menu" data-tab-group="order">
-          <button data-tab="o1" class="active">시장가</button>
-          <button data-tab="o2">지정가</button>
-          <button data-tab="o3">손익스탑</button>
-          <button data-tab="o4">MIT</button>
-        </div>
-        <div class="card-body">
-          <div style="display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:14px">
+      <div class="screen-col">
+        <!-- 종목 요약 바 -->
+        <div class="card symbol-bar">
+          <div class="sym">
+            <i class="star on">★</i>
             <div>
-              <div style="font-size:13px;font-weight:700;margin-bottom:6px">주문구분</div>
-              <div class="seg"><button class="sell active">매도</button><button class="buy">매수</button></div>
-            </div>
-            <div style="border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13px">
-              <div style="font-weight:700;margin-bottom:6px">주문가능</div>
-              <div style="display:flex;gap:16px"><span class="down">매도 <b>9</b></span><span class="up">매수 <b>11</b></span></div>
+              <div class="nm">호주달러 <span class="exp">(2026.09)</span> ▾</div>
+              <div class="code">ADU26</div>
             </div>
           </div>
-          <div class="field"><label>레버리지</label><select class="select"><option>1:50</option><option>1:10</option><option>1:1</option></select></div>
-          <div class="field"><label>주문수량</label>
-            <div class="stepper"><button type="button">−</button><div class="num">10</div><button type="button">＋</button></div>
-            <div class="order-quick" style="margin-top:6px"><button>1</button><button>5</button><button>10</button><button>50</button></div>
+          <div class="sym-price">
+            <div class="now up">0.71645</div>
+            <div class="chg up">▲ 0.00005 (+0.07%)</div>
           </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:8px;padding:11px 14px;font-size:13px;margin-bottom:14px"><span class="muted">예상증거금</span><b>1,235.25 USD (약 1,650,000원)</b></div>
-          <div class="order-actions" style="margin-bottom:10px"><button class="btn btn-blue btn-lg">매도 주문</button><button class="btn btn-red btn-lg">매수 주문</button></div>
-          <button class="btn btn-gray btn-full" style="margin-bottom:12px">초기화</button>
-          <div style="display:flex;justify-content:space-between"><label class="check"><input type="checkbox" checked> 주문확인창 보기</label><label class="check"><input type="checkbox"> 원클릭주문</label></div>
+          <div class="sym-ohlc">
+            <span>시가 <b class="up">0.71650</b></span>
+            <span>고가 <b class="up">0.71660</b></span>
+            <span>저가 <b class="down">0.71635</b></span>
+            <span>전일 <b>0.71640</b></span>
+          </div>
+          <div class="sym-vol">거래량 <b>237,653,002</b><button type="button" class="btn btn-sm btn-line-blue">관심등록</button></div>
+        </div>
+
+        <!-- 화면 탭 -->
+        <div class="screen-tabs" data-tab-group="screen">
+        <button type="button" data-tab="chart" class="active"><i class="icon icon-chart icon-17"></i><span>차트주문</span></button>
+        <button type="button" data-tab="hoga"><i class="icon icon-list icon-17"></i><span>호가</span></button>
+        <button type="button" data-tab="sise"><i class="icon icon-bar-chart-2 icon-17"></i><span>시세</span></button>
+        <button type="button" data-tab="deal"><i class="icon icon-layout icon-17"></i><span>거래창</span></button>
+        </div>
+
+      <!-- 차트주문 -->
+      <div class="tab-panel screen-pane active" data-panel-group="screen" data-panel="chart">
+          <div class="chart-col">
+            <div class="card chart-card">
+              <div class="chart-tools">
+                <button type="button" class="active">1분</button>
+                <button type="button">3분</button>
+                <button type="button">5분</button>
+                <button type="button">15분</button>
+                <button type="button">30분</button>
+                <button type="button">1시간</button>
+                <button type="button">4시간</button>
+                <button type="button">일</button>
+                <button type="button">주</button>
+                <button type="button">월</button>
+                <span class="sep"></span>
+                <button type="button" class="ico" aria-label="캔들 유형"><i class="icon icon-candle icon-16"></i></button>
+                <button type="button" class="ico" aria-label="지표"><i class="icon icon-trend icon-16"></i></button>
+                <button type="button" class="ico" aria-label="차트 설정"><i class="icon icon-gear-sm icon-16"></i></button>
+                <button type="button" class="ico" aria-label="스냅샷"><i class="icon icon-camera icon-16"></i></button>
+                <button type="button" class="ico" aria-label="전체화면"><i class="icon icon-expand icon-16"></i></button>
+              </div>
+              <div class="chart-body">
+                <div class="chart-draw">
+                  <button type="button" class="active" aria-label="십자선"><i class="icon icon-crosshair icon-16"></i></button>
+                  <button type="button" aria-label="추세선"><i class="icon icon-trendline icon-16"></i></button>
+                  <button type="button" aria-label="자유선"><i class="icon icon-brush icon-16"></i></button>
+                  <button type="button" aria-label="텍스트"><i class="icon icon-type icon-16"></i></button>
+                  <button type="button" aria-label="피보나치"><i class="icon icon-fib icon-16"></i></button>
+                  <button type="button" aria-label="도형"><i class="icon icon-rect icon-16"></i></button>
+                  <button type="button" aria-label="아이콘"><i class="icon icon-circle-plus icon-16"></i></button>
+                  <button type="button" aria-label="측정"><i class="icon icon-measure icon-16"></i></button>
+                  <button type="button" aria-label="자석"><i class="icon icon-magnet icon-16"></i></button>
+                  <button type="button" aria-label="확대"><i class="icon icon-zoom icon-16"></i></button>
+                  <button type="button" aria-label="숨기기"><i class="icon icon-eye-off icon-16"></i></button>
+                  <button type="button" aria-label="삭제"><i class="icon icon-trash icon-16"></i></button>
+                </div>
+                <div class="chart-view">
+                  <div class="chart-legend">호주달러 (2026.09) · 1 · USD <span class="up">시 0.71650 고 0.71660 저 0.71635 종 0.71645 +0.00005 (+0.07%)</span></div>
+                  <div class="chart-pad"><svg viewBox="0 0 900 320"><line x1="0" x2="900" y1="10" y2="10" stroke="#eef2f8"/><line x1="0" x2="900" y1="62.8" y2="62.8" stroke="#eef2f8"/><line x1="0" x2="900" y1="115.6" y2="115.6" stroke="#eef2f8"/><line x1="0" x2="900" y1="168.4" y2="168.4" stroke="#eef2f8"/><line x1="0" x2="900" y1="221.2" y2="221.2" stroke="#eef2f8"/><line x1="0" x2="900" y1="274" y2="274" stroke="#eef2f8"/><line x1="8.035714285714286" x2="8.035714285714286" y1="233.2318957511912" y2="261.85878914277885" stroke="#e5484d"/><rect x="2.8928571428571432" width="10.285714285714286" y="248.16224938726418" height="8.15040569958444" fill="#e5484d" stroke="#e5484d"/><rect x="2.8928571428571432" width="10.285714285714286" y="291.68" height="22.32" fill="#e5484d" opacity="0.4"/><line x1="24.10714285714286" x2="24.10714285714286" y1="227.80632982691162" y2="253.326584359634" stroke="#e5484d"/><rect x="18.96428571428572" width="10.285714285714286" y="239.24020764511556" height="8.922041742148622" fill="#e5484d" stroke="#e5484d"/><rect x="18.96428571428572" width="10.285714285714286" y="297.344" height="16.656" fill="#e5484d" opacity="0.4"/><line x1="40.17857142857143" x2="40.17857142857143" y1="212.20883252903832" y2="256.7828708002862" stroke="#e5484d"/><rect x="35.035714285714285" width="10.285714285714286" y="223.42166877254942" height="15.818538872566137" fill="#e5484d" stroke="#e5484d"/><rect x="35.035714285714285" width="10.285714285714286" y="294.032" height="19.968" fill="#e5484d" opacity="0.4"/><line x1="56.25000000000001" x2="56.25000000000001" y1="207.62724352631335" y2="246.96460594620106" stroke="#1a6dff"/><rect x="51.10714285714286" width="10.285714285714286" y="223.42166877254942" height="19.24267381144486" fill="#fff" stroke="#1a6dff"/><rect x="51.10714285714286" width="10.285714285714286" y="286.976" height="27.024" fill="#1a6dff" opacity="0.4"/><line x1="72.32142857142858" x2="72.32142857142858" y1="236.75650413311206" y2="274" stroke="#1a6dff"/><rect x="67.17857142857144" width="10.285714285714286" y="242.66434258399428" height="13.069585470931202" fill="#fff" stroke="#1a6dff"/><rect x="67.17857142857144" width="10.285714285714286" y="295.016" height="18.984" fill="#1a6dff" opacity="0.4"/><line x1="88.39285714285715" x2="88.39285714285715" y1="236.82482607438078" y2="257.8036809815951" stroke="#e5484d"/><rect x="83.25000000000001" width="10.285714285714286" y="250.9112027888992" height="4.822725266026282" fill="#e5484d" stroke="#e5484d"/><rect x="83.25000000000001" width="10.285714285714286" y="295.544" height="18.456" fill="#e5484d" opacity="0.4"/><line x1="104.46428571428574" x2="104.46428571428574" y1="240.0922224421136" y2="267.5295102680814" stroke="#e5484d"/><rect x="99.3214285714286" width="10.285714285714286" y="245.79911400691137" height="5.112088781987836" fill="#e5484d" stroke="#e5484d"/><rect x="99.3214285714286" width="10.285714285714286" y="286.20799999999997" height="27.792" fill="#e5484d" opacity="0.4"/><line x1="120.5357142857143" x2="120.5357142857143" y1="232.71747172281508" y2="250.15966143494347" stroke="#e5484d"/><rect x="115.39285714285717" width="10.285714285714286" y="240.25297995098114" height="5.546134055930224" fill="#e5484d" stroke="#e5484d"/><rect x="115.39285714285717" width="10.285714285714286" y="287.936" height="26.064" fill="#e5484d" opacity="0.4"/><line x1="136.60714285714286" x2="136.60714285714286" y1="218.51052687664603" y2="254.178599156632" stroke="#e5484d"/><rect x="131.46428571428572" width="10.285714285714286" y="230.3663931556273" height="9.88658679535385" fill="#e5484d" stroke="#e5484d"/><rect x="131.46428571428572" width="10.285714285714286" y="303.128" height="10.872" fill="#e5484d" opacity="0.4"/><line x1="152.67857142857144" x2="152.67857142857144" y1="221.96681331729815" y2="251.46179725677055" stroke="#1a6dff"/><rect x="147.5357142857143" width="10.285714285714286" y="230.3663931556273" height="5.883724824552047" fill="#fff" stroke="#1a6dff"/><rect x="147.5357142857143" width="10.285714285714286" y="305.288" height="8.712" fill="#1a6dff" opacity="0.4"/><line x1="168.75" x2="168.75" y1="209.97028421805783" y2="255.07884120629024" stroke="#e5484d"/><rect x="163.60714285714286" width="10.285714285714286" y="220.96207888687604" height="15.288039093303297" fill="#e5484d" stroke="#e5484d"/><rect x="163.60714285714286" width="10.285714285714286" y="304.976" height="9.024000000000001" fill="#e5484d" opacity="0.4"/><line x1="184.82142857142858" x2="184.82142857142858" y1="193.46048805736118" y2="223.71505122623273" stroke="#e5484d"/><rect x="179.67857142857144" width="10.285714285714286" y="202.2016776020338" height="18.76040128484223" fill="#e5484d" stroke="#e5484d"/><rect x="179.67857142857144" width="10.285714285714286" y="291.488" height="22.512" fill="#e5484d" opacity="0.4"/><line x1="200.89285714285717" x2="200.89285714285717" y1="185.96516920641199" y2="216.00672867603402" stroke="#1a6dff"/><rect x="195.75000000000003" width="10.285714285714286" y="202.2016776020338" height="10.368859321956506" fill="#fff" stroke="#1a6dff"/><rect x="195.75000000000003" width="10.285714285714286" y="298.376" height="15.624" fill="#1a6dff" opacity="0.4"/><line x1="216.96428571428572" x2="216.96428571428572" y1="210.1189849137603" y2="230.39050678195744" stroke="#1a6dff"/><rect x="211.82142857142858" width="10.285714285714286" y="212.57053692399032" height="2" fill="#fff" stroke="#1a6dff"/><rect x="211.82142857142858" width="10.285714285714286" y="294.128" height="19.872" fill="#1a6dff" opacity="0.4"/><line x1="233.0357142857143" x2="233.0357142857143" y1="209.78541308286015" y2="230.08908645283077" stroke="#e5484d"/><rect x="227.89285714285717" width="10.285714285714286" y="212.13649165004796" height="2" fill="#e5484d" stroke="#e5484d"/><rect x="227.89285714285717" width="10.285714285714286" y="291.944" height="22.056" fill="#e5484d" opacity="0.4"/><line x1="249.10714285714286" x2="249.10714285714286" y1="211.97573414118045" y2="240.08820350439194" stroke="#1a6dff"/><rect x="243.96428571428572" width="10.285714285714286" y="212.13649165004796" height="12.780221954969647" fill="#fff" stroke="#1a6dff"/><rect x="243.96428571428572" width="10.285714285714286" y="286.616" height="27.384" fill="#1a6dff" opacity="0.4"/><line x1="265.17857142857144" x2="265.17857142857144" y1="202.56338199698584" y2="240.4298132107355" stroke="#e5484d"/><rect x="260.0357142857143" width="10.285714285714286" y="213.77621824049695" height="11.14049536452066" fill="#e5484d" stroke="#e5484d"/><rect x="260.0357142857143" width="10.285714285714286" y="304.616" height="9.384" fill="#e5484d" opacity="0.4"/><line x1="281.25" x2="281.25" y1="207.5669594604881" y2="249.96675242430248" stroke="#1a6dff"/><rect x="276.10714285714283" width="10.285714285714286" y="213.77621824049695" height="16.87953843109196" fill="#fff" stroke="#1a6dff"/><rect x="276.10714285714283" width="10.285714285714286" y="306.848" height="7.152" fill="#1a6dff" opacity="0.4"/><line x1="297.3214285714286" x2="297.3214285714286" y1="214.9216154911782" y2="254.00980377232116" stroke="#1a6dff"/><rect x="292.17857142857144" width="10.285714285714286" y="230.6557566715889" height="4.7262707607057735" fill="#fff" stroke="#1a6dff"/><rect x="292.17857142857144" width="10.285714285714286" y="286.784" height="27.216" fill="#1a6dff" opacity="0.4"/><line x1="313.39285714285717" x2="313.39285714285717" y1="218.2613527379014" y2="241.83242247560483" stroke="#e5484d"/><rect x="308.25" width="10.285714285714286" y="234.89975490569205" height="2" fill="#e5484d" stroke="#e5484d"/><rect x="308.25" width="10.285714285714286" y="300.488" height="13.512" fill="#e5484d" opacity="0.4"/><line x1="329.4642857142857" x2="329.4642857142857" y1="220.41148441900478" y2="267.8791578498684" stroke="#1a6dff"/><rect x="324.32142857142856" width="10.285714285714286" y="234.89975490569205" height="14.853993819360937" fill="#fff" stroke="#1a6dff"/><rect x="324.32142857142856" width="10.285714285714286" y="290.864" height="23.136" fill="#1a6dff" opacity="0.4"/><line x1="345.53571428571433" x2="345.53571428571433" y1="216.1835619357884" y2="250.35658938330624" stroke="#e5484d"/><rect x="340.39285714285717" width="10.285714285714286" y="230.75221117690947" height="19.001537548143517" fill="#e5484d" stroke="#e5484d"/><rect x="340.39285714285717" width="10.285714285714286" y="306.608" height="7.392" fill="#e5484d" opacity="0.4"/><line x1="361.6071428571429" x2="361.6071428571429" y1="213.55115772808242" y2="258.98926760949325" stroke="#1a6dff"/><rect x="356.4642857142857" width="10.285714285714286" y="230.75221117690947" height="13.889448766155681" fill="#fff" stroke="#1a6dff"/><rect x="356.4642857142857" width="10.285714285714286" y="306.392" height="7.6080000000000005" fill="#1a6dff" opacity="0.4"/><line x1="377.67857142857144" x2="377.67857142857144" y1="239.26834020916755" y2="256.15591651570287" stroke="#e5484d"/><rect x="372.5357142857143" width="10.285714285714286" y="242.18207005739174" height="2.4595898856734095" fill="#e5484d" stroke="#e5484d"/><rect x="372.5357142857143" width="10.285714285714286" y="287.96" height="26.04" fill="#e5484d" opacity="0.4"/><line x1="393.75000000000006" x2="393.75000000000006" y1="222.64601379226366" y2="244.47286455875422" stroke="#e5484d"/><rect x="388.6071428571429" width="10.285714285714286" y="226.84580371142818" height="15.336266345963566" fill="#e5484d" stroke="#e5484d"/><rect x="388.6071428571429" width="10.285714285714286" y="294.632" height="19.368000000000002" fill="#e5484d" opacity="0.4"/><line x1="409.8214285714286" x2="409.8214285714286" y1="202.25392379241583" y2="241.95700954497718" stroke="#e5484d"/><rect x="404.67857142857144" width="10.285714285714286" y="213.48685472453536" height="13.358948986892813" fill="#e5484d" stroke="#e5484d"/><rect x="404.67857142857144" width="10.285714285714286" y="303.92" height="10.08" fill="#e5484d" opacity="0.4"/><line x1="425.89285714285717" x2="425.89285714285717" y1="191.94534853628468" y2="224.94082723134778" stroke="#e5484d"/><rect x="420.75" width="10.285714285714286" y="200.94776903286706" height="12.539085691668305" fill="#e5484d" stroke="#e5484d"/><rect x="420.75" width="10.285714285714286" y="304.64" height="9.36" fill="#e5484d" opacity="0.4"/><line x1="441.9642857142857" x2="441.9642857142857" y1="184.2651585501378" y2="219.41478786402604" stroke="#e5484d"/><rect x="436.82142857142856" width="10.285714285714286" y="192.3633180593403" height="8.58445097352677" fill="#e5484d" stroke="#e5484d"/><rect x="436.82142857142856" width="10.285714285714286" y="288.872" height="25.128" fill="#e5484d" opacity="0.4"/><line x1="458.03571428571433" x2="458.03571428571433" y1="164.35534107689264" y2="202.4106623635617" stroke="#e5484d"/><rect x="452.89285714285717" width="10.285714285714286" y="179.96891412565273" height="12.394403933687556" fill="#e5484d" stroke="#e5484d"/><rect x="452.89285714285717" width="10.285714285714286" y="298.112" height="15.888" fill="#e5484d" opacity="0.4"/><line x1="474.1071428571429" x2="474.1071428571429" y1="168.99319520772124" y2="184.0682306017751" stroke="#e5484d"/><rect x="468.9642857142857" width="10.285714285714286" y="174.51923457504304" height="5.449679550609687" fill="#e5484d" stroke="#e5484d"/><rect x="468.9642857142857" width="10.285714285714286" y="296.264" height="17.736" fill="#e5484d" opacity="0.4"/><line x1="490.17857142857144" x2="490.17857142857144" y1="154.0105953812663" y2="179.36205452967775" stroke="#e5484d"/><rect x="485.0357142857143" width="10.285714285714286" y="165.40428382225335" height="9.114950752789696" fill="#e5484d" stroke="#e5484d"/><rect x="485.0357142857143" width="10.285714285714286" y="288.512" height="25.488" fill="#e5484d" opacity="0.4"/><line x1="506.25000000000006" x2="506.25000000000006" y1="151.820274322946" y2="191.9252538476762" stroke="#1a6dff"/><rect x="501.1071428571429" width="10.285714285714286" y="165.40428382225335" height="11.912131407084928" fill="#fff" stroke="#1a6dff"/><rect x="501.1071428571429" width="10.285714285714286" y="288.104" height="25.896" fill="#1a6dff" opacity="0.4"/><line x1="522.3214285714287" x2="522.3214285714287" y1="163.3465877087488" y2="185.73608975627582" stroke="#e5484d"/><rect x="517.1785714285716" width="10.285714285714286" y="165.83832909619574" height="11.47808613314254" fill="#e5484d" stroke="#e5484d"/><rect x="517.1785714285716" width="10.285714285714286" y="305.12" height="8.879999999999999" fill="#e5484d" opacity="0.4"/><line x1="538.3928571428572" x2="538.3928571428572" y1="143.1795582213156" y2="172.6303338458494" stroke="#e5484d"/><rect x="533.2500000000001" width="10.285714285714286" y="154.55315197369424" height="11.285177122501494" fill="#e5484d" stroke="#e5484d"/><rect x="533.2500000000001" width="10.285714285714286" y="296.552" height="17.448" fill="#e5484d" opacity="0.4"/><line x1="554.4642857142858" x2="554.4642857142858" y1="135.9816407617714" y2="160.82269481952838" stroke="#e5484d"/><rect x="549.3214285714287" width="10.285714285714286" y="138.97574936442936" height="15.57740260926488" fill="#e5484d" stroke="#e5484d"/><rect x="549.3214285714287" width="10.285714285714286" y="287.744" height="26.256" fill="#e5484d" opacity="0.4"/><line x1="570.5357142857143" x2="570.5357142857143" y1="117.77183394480048" y2="154.62951179040633" stroke="#e5484d"/><rect x="565.3928571428572" width="10.285714285714286" y="117.85221269923424" height="21.123536665195118" fill="#e5484d" stroke="#e5484d"/><rect x="565.3928571428572" width="10.285714285714286" y="286.64" height="27.36" fill="#e5484d" opacity="0.4"/><line x1="586.607142857143" x2="586.607142857143" y1="110.07556820776688" y2="143.01478177472634" stroke="#1a6dff"/><rect x="581.4642857142859" width="10.285714285714286" y="117.85221269923424" height="17.506492715675407" fill="#fff" stroke="#1a6dff"/><rect x="581.4642857142859" width="10.285714285714286" y="293.384" height="20.616" fill="#1a6dff" opacity="0.4"/><line x1="602.6785714285716" x2="602.6785714285716" y1="129.85276073619627" y2="146.97745436831127" stroke="#1a6dff"/><rect x="597.5357142857144" width="10.285714285714286" y="135.35870541490965" height="4.726270760705745" fill="#fff" stroke="#1a6dff"/><rect x="597.5357142857144" width="10.285714285714286" y="298.136" height="15.863999999999999" fill="#1a6dff" opacity="0.4"/><line x1="618.7500000000001" x2="618.7500000000001" y1="104.80272191691152" y2="147.05783312274505" stroke="#e5484d"/><rect x="613.607142857143" width="10.285714285714286" y="121.90330192269634" height="18.181674252919052" fill="#e5484d" stroke="#e5484d"/><rect x="613.607142857143" width="10.285714285714286" y="284.096" height="29.904" fill="#e5484d" opacity="0.4"/><line x1="634.8214285714287" x2="634.8214285714287" y1="111.03207538552878" y2="155.77490904108757" stroke="#1a6dff"/><rect x="629.6785714285716" width="10.285714285714286" y="121.90330192269634" height="16.107902388527762" fill="#fff" stroke="#1a6dff"/><rect x="629.6785714285716" width="10.285714285714286" y="301.04" height="12.959999999999999" fill="#1a6dff" opacity="0.4"/><line x1="650.8928571428572" x2="650.8928571428572" y1="116.55007687740722" y2="141.1861651113581" stroke="#e5484d"/><rect x="645.7500000000001" width="10.285714285714286" y="121.61393840673479" height="16.397265904489316" fill="#e5484d" stroke="#e5484d"/><rect x="645.7500000000001" width="10.285714285714286" y="291.608" height="22.392000000000003" fill="#e5484d" opacity="0.4"/><line x1="666.9642857142858" x2="666.9642857142858" y1="92.64141637108193" y2="125.39173986512203" stroke="#e5484d"/><rect x="661.8214285714287" width="10.285714285714286" y="108.0138531565407" height="13.600085250194084" fill="#e5484d" stroke="#e5484d"/><rect x="661.8214285714287" width="10.285714285714286" y="296.36" height="17.64" fill="#e5484d" opacity="0.4"/><line x1="683.0357142857144" x2="683.0357142857144" y1="86.0583963829561" y2="115.95125515687563" stroke="#e5484d"/><rect x="677.8928571428573" width="10.285714285714286" y="87.32436176528799" height="20.689491391252716" fill="#e5484d" stroke="#e5484d"/><rect x="677.8928571428573" width="10.285714285714286" y="301.208" height="12.792" fill="#e5484d" opacity="0.4"/><line x1="699.107142857143" x2="699.107142857143" y1="73.0169434760767" y2="108.68501575606271" stroke="#1a6dff"/><rect x="693.9642857142859" width="10.285714285714286" y="87.32436176528799" height="2" fill="#fff" stroke="#1a6dff"/><rect x="693.9642857142859" width="10.285714285714286" y="285.272" height="28.727999999999998" fill="#1a6dff" opacity="0.4"/><line x1="715.1785714285716" x2="715.1785714285716" y1="60.14026701578652" y2="90.76055351733173" stroke="#e5484d"/><rect x="710.0357142857144" width="10.285714285714286" y="67.69586993256104" height="21.557581939137478" fill="#e5484d" stroke="#e5484d"/><rect x="710.0357142857144" width="10.285714285714286" y="287.984" height="26.016" fill="#e5484d" opacity="0.4"/><line x1="731.2500000000001" x2="731.2500000000001" y1="49.1283776583599" y2="75.7699158154334" stroke="#1a6dff"/><rect x="726.107142857143" width="10.285714285714286" y="67.69586993256104" height="2" fill="#fff" stroke="#1a6dff"/><rect x="726.107142857143" width="10.285714285714286" y="302.36" height="11.64" fill="#1a6dff" opacity="0.4"/><line x1="747.3214285714287" x2="747.3214285714287" y1="67.55118817458023" y2="97.78163771712164" stroke="#1a6dff"/><rect x="742.1785714285716" width="10.285714285714286" y="68.99800575438815" height="17.892310736957484" fill="#fff" stroke="#1a6dff"/><rect x="742.1785714285716" width="10.285714285714286" y="289.952" height="24.048000000000002" fill="#1a6dff" opacity="0.4"/><line x1="763.3928571428572" x2="763.3928571428572" y1="60.42561159402645" y2="102.00152232489462" stroke="#e5484d"/><rect x="758.2500000000001" width="10.285714285714286" y="64.94691653092607" height="21.943399960419555" fill="#e5484d" stroke="#e5484d"/><rect x="758.2500000000001" width="10.285714285714286" y="302.192" height="11.808" fill="#e5484d" opacity="0.4"/><line x1="779.4642857142859" x2="779.4642857142859" y1="60.20457001933356" y2="77.00372969599178" stroke="#1a6dff"/><rect x="774.3214285714288" width="10.285714285714286" y="64.94691653092607" height="2.411362633013141" fill="#fff" stroke="#1a6dff"/><rect x="774.3214285714288" width="10.285714285714286" y="297.896" height="16.104" fill="#1a6dff" opacity="0.4"/><line x1="795.5357142857144" x2="795.5357142857144" y1="37.320738632038925" y2="69.38784271339195" stroke="#e5484d"/><rect x="790.3928571428573" width="10.285714285714286" y="51.34683128073198" height="16.011447883207232" fill="#e5484d" stroke="#e5484d"/><rect x="790.3928571428573" width="10.285714285714286" y="306.776" height="7.224" fill="#e5484d" opacity="0.4"/><line x1="811.607142857143" x2="811.607142857143" y1="16.719663870663307" y2="64.70979920534646" stroke="#e5484d"/><rect x="806.4642857142859" width="10.285714285714286" y="32.87579351185134" height="18.47103776888064" fill="#e5484d" stroke="#e5484d"/><rect x="806.4642857142859" width="10.285714285714286" y="305.792" height="8.208" fill="#e5484d" opacity="0.4"/><line x1="827.6785714285716" x2="827.6785714285716" y1="10" y2="52.427925527866236" stroke="#e5484d"/><rect x="822.5357142857144" width="10.285714285714286" y="27.76370472986346" height="5.112088781987882" fill="#e5484d" stroke="#e5484d"/><rect x="822.5357142857144" width="10.285714285714286" y="299" height="15" fill="#e5484d" opacity="0.4"/><line x1="843.7500000000001" x2="843.7500000000001" y1="13.05439266848333" y2="64.81429158611033" stroke="#1a6dff"/><rect x="838.607142857143" width="10.285714285714286" y="27.76370472986346" height="22.039854465740095" fill="#fff" stroke="#1a6dff"/><rect x="838.607142857143" width="10.285714285714286" y="296.888" height="17.112000000000002" fill="#1a6dff" opacity="0.4"/><line x1="859.8214285714287" x2="859.8214285714287" y1="37.4493446391329" y2="61.88046704927769" stroke="#e5484d"/><rect x="854.6785714285716" width="10.285714285714286" y="41.74960800133964" height="8.053951194263917" fill="#e5484d" stroke="#e5484d"/><rect x="854.6785714285716" width="10.285714285714286" y="304.76" height="9.24" fill="#e5484d" opacity="0.4"/><line x1="875.8928571428572" x2="875.8928571428572" y1="26.81925436526662" y2="59.13553258536436" stroke="#1a6dff"/><rect x="870.7500000000001" width="10.285714285714286" y="41.74960800133964" height="4.002861970801803" fill="#fff" stroke="#1a6dff"/><rect x="870.7500000000001" width="10.285714285714286" y="307.424" height="6.5760000000000005" fill="#1a6dff" opacity="0.4"/><line x1="891.9642857142859" x2="891.9642857142859" y1="26.533909787026737" y2="63.99844722860752" stroke="#e5484d"/><rect x="886.8214285714288" width="10.285714285714286" y="31.477203184703658" height="14.275266787437783" fill="#e5484d" stroke="#e5484d"/><rect x="886.8214285714288" width="10.285714285714286" y="297.632" height="16.368000000000002" fill="#e5484d" opacity="0.4"/></svg></div>
+                  <div class="chart-vol">거래량 (Volume) · SMA 9 <b>14</b></div>
+                </div>
+              </div>
+              <div class="chart-foot">
+                <div class="range">
+                  <button type="button">5y</button>
+                  <button type="button">1y</button>
+                  <button type="button">6월</button>
+                  <button type="button">3월</button>
+                  <button type="button">1월</button>
+                  <button type="button">5일</button>
+                  <button type="button" class="active">1일</button>
+                </div>
+                <div class="meta">09:51:25 (UTC+9) · <a href="#auto" class="blue">자동</a></div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!-- 호가 -->
+      <div class="tab-panel screen-pane" data-panel-group="screen" data-panel="hoga">
+        <div class="card card-body hoga-panel">
+          <div class="hoga-top">
+            <div class="avail av-sell"><span>매도 가능</span><b>10</b></div>
+            <div class="avail av-buy"><span>매수 가능</span><b>10</b></div>
+            <div class="fld">
+              <label class="check"><input type="checkbox" checked> 손절</label>
+              <div class="stepper"><button type="button">−</button><div class="num">10</div><button type="button">＋</button></div>
+            </div>
+            <div class="fld">
+              <label class="check"><input type="checkbox"> 익절</label>
+              <div class="stepper"><button type="button">−</button><div class="num">10</div><button type="button">＋</button></div>
+            </div>
+          </div>
+          <div class="hoga-acts">
+            <button type="button" class="b-sell">시장가 매도</button>
+            <button type="button" class="b-navy">전 종목 청산</button>
+            <button type="button" class="b-navy">현 종목 청산</button>
+            <button type="button" class="b-buy">시장가 매수</button>
+          </div>
+          <div class="hoga-opts">
+            <div class="fld"><span class="lb">고가</span><button type="button" class="btn btn-sm btn-line-red">고가</button></div>
+            <div class="fld"><span class="lb">주문수량</span><div class="stepper"><button type="button">−</button><div class="num">1</div><button type="button">＋</button></div></div>
+            <div class="fld"><span class="lb">레버리지</span><select class="select"><option>1:1</option><option>1:10</option><option>1:50</option></select></div>
+            <div class="fld"><span class="lb">고정</span><button type="button" class="switch" role="switch" aria-checked="true" aria-label="호가 고정"><span class="knob"></span></button></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tbl-wrap hoga-scroll"><table class="tbl hoga-book">
+            <thead><tr><th>MIT</th><th>매도</th><th>잔량</th><th>가격</th><th>잔량</th><th>매수</th><th>MIT</th></tr></thead>
+            <tbody>
+              <tr><td></td><td></td><td class="ask-q on"><b>2</b></td><td class="px">1080.75</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q on"><b>2</b></td><td class="px">1080.70</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q on"><b>2</b></td><td class="px">1080.65</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q on"><b>1</b></td><td class="px">1080.60</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.55</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.50</td><td class="bid-q on"><b>3</b></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.45</td><td class="bid-q on"><b>4</b></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.40</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr class="cur"><td></td><td></td><td class="ask-q"></td><td class="px">1080.35</td><td class="bid-q on"><b>3</b></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.30</td><td class="bid-q on"><b>4</b></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.25</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.20</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.15</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.10</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.05</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1080.00</td><td class="bid-q"></td><td></td><td></td></tr>
+              <tr><td></td><td></td><td class="ask-q"></td><td class="px">1079.95</td><td class="bid-q"></td><td></td><td></td></tr>
+            </tbody>
+            <tfoot><tr><td>0</td><td>0</td><td><b>1,515</b></td><td class="down"><b>−458</b></td><td><b>1,017</b></td><td>0</td><td>0</td></tr></tfoot>
+          </table></div>
+        </div>
+
+        <div class="hoga-btns">
+          <button type="button" class="b-line-blue">지정가</button>
+          <button type="button" class="b-yellow">전 종목 취소</button>
+          <button type="button" class="b-yellow">현 종목 취소</button>
+          <button type="button" class="b-line-yellow">현재가</button>
+          <button type="button" class="b-line-blue">MIT 취소</button>
+          <button type="button" class="b-line-blue">매도 취소</button>
+          <button type="button" class="b-line-red">매수 취소</button>
+          <button type="button" class="b-line-red">MIT 취소</button>
         </div>
       </div>
 
-      <!-- 보유포지션 + 공지 -->
-      <div class="col-right" style="display:flex;flex-direction:column;gap:14px">
-        <div class="card" data-tab-group="pos">
-          <div class="tab-menu">
-            <button data-tab="p1" class="active">보유포지션 (1)</button>
-            <button data-tab="p2">미체결 (0)</button>
-            <button data-tab="p3">주문내역</button>
-          </div>
-          <div data-panel-group="pos" data-panel="p1" class="tab-panel active">
-            <div class="tbl-wrap"><table class="tbl">
-              <thead><tr><th>종목</th><th>구분</th><th>수량</th><th>평균가</th><th>현재가</th><th>평가손익</th><th>수익률</th><th>청산</th></tr></thead>
-              <tbody><tr><td>나스닥</td><td class="up" style="font-weight:700">매수</td><td>1</td><td>1,235.25</td><td>4,599.7</td><td class="up" style="font-weight:700">132,132</td><td class="up">+3.21%</td><td><button class="btn btn-sm btn-red">청산</button></td></tr></tbody>
-            </table></div>
-          </div>
-          <div data-panel-group="pos" data-panel="p2" class="tab-panel"><div class="empty"><div class="cir"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg></div><b>미체결 내역이 없습니다.</b></div></div>
-          <div data-panel-group="pos" data-panel="p3" class="tab-panel"><div class="card-body" style="text-align:center"><a href="030101.html" class="btn btn-line-blue">주문내역 전체보기</a></div></div>
+      <!-- 시세 -->
+      <div class="tab-panel screen-pane" data-panel-group="screen" data-panel="sise">
+        <div class="card card-body sise-top">
+          <label class="lb" for="sise-symbol">종목선택</label>
+          <select class="select" id="sise-symbol">
+            <option>KOSPI200 F2612</option>
+            <option>E-MINI NASDAQ 100</option>
+            <option>E-MINI S&amp;P 500</option>
+            <option>호주달러 (2026.09)</option>
+            <option>유로달러 (2026.09)</option>
+            <option>금 (2026.12)</option>
+          </select>
+          <button type="button" class="btn btn-blue sise-set">설정</button>
         </div>
-        <div class="card" data-tab-group="news">
-          <div class="tab-menu" style="position:relative">
-            <button data-tab="n1" class="active">공지사항</button>
-            <button data-tab="n2">시장뉴스</button>
-            <a href="050101.html" style="margin-left:auto;align-self:center;padding-right:14px;font-size:12px;color:var(--muted)">더보기 ›</a>
-          </div>
-          <div data-panel-group="news" data-panel="n1" class="tab-panel active card-body" style="padding-top:6px">
-            <ul class="news-list">
-              <li><span class="date">2026.03.26</span><a href="050101.html">[안내] 미국 지수 선물 거래시간 변경 안내</a></li>
-              <li><span class="date">2026.03.25</span><a href="050101.html">[긴급] 나스닥 변동성 확대에 따른 유의사항</a></li>
-              <li><span class="date">2026.03.24</span><a href="050101.html">[이벤트] 해외선물 수수료 할인 이벤트</a></li>
-              <li><span class="date">2026.03.22</span><a href="050101.html">시스템 점검 안내 (03/23 01:00~03:00)</a></li>
-              <li><span class="date">2026.03.20</span><a href="050101.html">신규상품 상장 안내 - E-MINI S&amp;P500</a></li>
-            </ul>
-          </div>
-          <div data-panel-group="news" data-panel="n2" class="tab-panel card-body" style="padding-top:6px">
-            <ul class="news-list">
-              <li><span class="date">2026.03.26</span><a href="#">연준 금리 동결 시사, 지수 선물 상승</a></li>
-              <li><span class="date">2026.03.26</span><a href="#">달러/원 환율 1,325원대 하락 마감</a></li>
-              <li><span class="date">2026.03.25</span><a href="#">국제유가 WTI 배럴당 78달러선 회복</a></li>
-            </ul>
-          </div>
+
+        <div class="card">
+          <div class="tbl-wrap"><table class="tbl sise-table">
+            <thead><tr><th>시간</th><th>체결</th><th>체결량</th></tr></thead>
+            <tbody>
+              <tr><td class="muted">11:05:24</td><td class="down strong-num">1081.90</td><td class="down">1</td></tr>
+              <tr><td class="muted">11:05:24</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="down strong-num">1081.95</td><td class="down">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="down strong-num">1081.95</td><td class="down">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.05</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="up strong-num">1082.00</td><td class="up">1</td></tr>
+              <tr><td class="muted">11:05:23</td><td class="down strong-num">1081.95</td><td class="down">1</td></tr>
+              <tr><td class="muted">11:05:22</td><td class="down strong-num">1081.90</td><td class="down">1</td></tr>
+              <tr><td class="muted">11:05:22</td><td class="up strong-num">1081.95</td><td class="up">1</td></tr>
+            </tbody>
+          </table></div>
         </div>
       </div>
+
+      <!-- 거래창 -->
+      <div class="tab-panel screen-pane" data-panel-group="screen" data-panel="deal"></div>
+
+        <!-- 보유 포지션 (전체 폭) -->
+        <div class="card position-card pos-scroll">
+          <div class="tbl-wrap"><table class="tbl position-table">
+            <thead><tr><th>구분</th><th>종목코드</th><th>수량</th><th>주문가</th><th>평가손익</th><th>주문</th></tr></thead>
+            <tbody>
+              <tr><td>체결</td><td><a href="#code" class="blue">A016C000</a></td><td class="up strong-num">매수[1]</td><td>1103.350</td><td class="down strong-num">−462,500</td><td><button type="button" class="btn btn-sm btn-line">청산</button></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr class="empty"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- 우: 계좌 / 주문 / 호가 -->
+      <aside class="hts-order">
+        <div class="hts-top">
+        <div class="card acct-grid acct-grid4">
+            <div class="cell"><span>평가담보금</span><b>69,379,921</b></div>
+            <div class="cell"><span>평가손익합</span><b class="down">−250,000</b></div>
+            <div class="cell"><span>실현손익</span><b class="up">3,288,968</b></div>
+            <div class="cell"><span>로스컷</span><b class="up">50,000</b></div>
+            <div class="cell"><span>전일대비</span><b class="up">10.85</b></div>
+            <div class="cell"><span>시가</span><b>1088.35</b></div>
+            <div class="cell"><span>고가</span><b class="up">1104.85</b></div>
+            <div class="cell"><span>저가</span><b class="down">1073.10</b></div>
+        </div>
+
+        <div class="card ord-box">
+          <div class="ord-set">
+            <div class="avail av-sell"><span>매도 가능</span><b>0</b></div>
+            <div class="avail av-buy"><span>매수 가능</span><b>0</b></div>
+            <div class="fld">
+              <label class="check"><input type="checkbox"> 손절</label>
+              <div class="stepper"><button type="button" aria-label="감소">−</button><div class="num">10</div><button type="button" aria-label="증가">＋</button></div>
+            </div>
+            <div class="fld">
+              <label class="check"><input type="checkbox"> 익절</label>
+              <div class="stepper"><button type="button" aria-label="감소">−</button><div class="num">10</div><button type="button" aria-label="증가">＋</button></div>
+            </div>
+          </div>
+          <div class="ord-opts">
+            <button type="button" class="btn btn-sm btn-line-red hi">고가</button>
+            <div class="stepper"><button type="button" aria-label="감소">−</button><div class="num">1</div><button type="button" aria-label="증가">＋</button></div>
+            <select class="select" aria-label="레버리지"><option>1:1</option><option>1:10</option><option>1:50</option></select>
+            <div class="fix"><span>고정:</span><button type="button" class="switch" role="switch" aria-checked="true" aria-label="주문 고정"><span class="knob"></span></button></div>
+          </div>
+          <div class="ord-btns">
+            <button type="button" class="b-sell">시장가매도</button>
+            <button type="button" class="b-navy">전종목 청산</button>
+            <button type="button" class="b-navy">현종목 청산</button>
+            <button type="button" class="b-buy">시장가매수</button>
+          </div>
+        </div>
+
+        </div>
+
+        <button type="button" class="top-fold" data-top-fold aria-expanded="true" aria-label="주문 영역 접기/펼치기"><i class="icon icon-chev-up icon-14"></i></button>
+
+        <div class="card hts-hoga fold-btns">
+          <div class="tbl-wrap hoga-scroll"><table class="tbl hoga-tbl hoga-mit">
+            <thead><tr><th>MIT</th><th>매도</th><th>잔량</th><th class="px">가격</th><th>잔량</th><th>매수</th><th>MIT</th></tr></thead>
+            <tbody>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.40</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.35</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.30</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.25</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.20</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.15</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.10</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.05</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,093.00</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.95</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.90</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"><b>4</b></td><td class="px">1,092.85</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"><b>12</b></td><td class="px">1,092.80</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"><b>2</b></td><td class="px">1,092.75</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"><b>3</b></td><td class="px">1,092.70</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr class="cur"><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"><b>3</b></td><td class="px">1,092.65</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.60</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.55</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.50</td><td class="q-bid"><b>2</b></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.45</td><td class="q-bid"><b>2</b></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.40</td><td class="q-bid"><b>2</b></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.35</td><td class="q-bid"><b>4</b></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.30</td><td class="q-bid"><b>3</b></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.25</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.20</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.15</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.10</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.05</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,092.00</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,091.95</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,091.90</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+              <tr><td class="mit-a"></td><td class="o-ask"></td><td class="q-ask"></td><td class="px">1,091.85</td><td class="q-bid"></td><td class="o-bid"></td><td class="mit-b"></td></tr>
+            </tbody>
+            <tfoot><tr><td>0</td><td>0</td><td><b>24</b></td><td class="px">13:34:09</td><td><b>14</b></td><td>0</td><td>0</td></tr></tfoot>
+          </table></div>
+          <button type="button" class="hoga-fold" data-hoga-fold aria-expanded="true" aria-label="호가 접기/펼치기"><i class="icon icon-chev-down icon-14"></i></button>
+          <div class="hoga-btns">
+            <button type="button" class="b-line-blue">저가</button>
+            <button type="button" class="b-yellow">전 종목 취소</button>
+            <button type="button" class="b-yellow">현 종목 취소</button>
+            <button type="button" class="b-line-yellow">현재가</button>
+            <button type="button" class="b-line-blue">MIT 취소</button>
+            <button type="button" class="b-line-blue">매도 취소</button>
+            <button type="button" class="b-line-red">매수 취소</button>
+            <button type="button" class="b-line-red">MIT 취소</button>
+          </div>
+        </div>
+
+      </aside>
     </div>
   </main>
 </div>

@@ -12,37 +12,68 @@
 <!-- 회원가입: 로고 / 폼 카드 -->
 <div class="auth-body">
   <div class="auth-logo">
-    <span style="color:#3d8bfd"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2c3 2.8 4.5 6.2 4.5 10S15 19.2 12 22c-3-2.8-4.5-6.2-4.5-10S9 4.8 12 2z"></path></svg></span>
-    <div class="word" style="font-size:26px">Global<em>Trade</em></div>
+    <span class="mark"><i class="icon icon-globe icon-44"></i></span>
+    <div class="word word-sm">Global<em>Trade</em></div>
   </div>
-  <div class="reg-card">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:10px;font-size:19px;font-weight:800">
-        <span style="width:38px;height:38px;border-radius:9px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg></span>
-        회원가입 <small style="font-size:11px;color:var(--muted);letter-spacing:1px">REGISTER</small>
+  <div class="auth-stage stage-wide">
+    <div class="auth-aside aside-left">
+      <h2>세상을 잇는<br>글로벌 투자 플랫폼</h2>
+      <span class="line"></span>
+      <p class="en">TRADE BEYOND BORDERS</p>
+    </div>
+    <div class="reg-card">
+      <div class="reg-head">
+        <div class="tit">
+          <span class="ico"><i class="icon icon-user icon-20"></i></span>
+          회원가입 <small>REGISTER</small>
+        </div>
+        <span class="sub">지금, 더 넓은 세상에 투자하세요.</span>
       </div>
-      <span style="font-size:12px;color:var(--muted)">지금, 더 넓은 세상에 투자하세요.</span>
+      <div class="reg-banner">회원정보와 출금계좌 정보를 정확하게 입력해 주세요.</div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-user icon-15"></i>이름</div><input type="text" placeholder="홍길동"></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-at icon-15"></i>아이디</div><input type="text" value="test1"><button type="button" class="btn btn-sm btn-line-blue" data-dupcheck="아이디">아이디 중복확인</button></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-tag icon-15"></i>닉네임</div><input type="text" placeholder="닉네임을 입력하세요."><button type="button" class="btn btn-sm btn-line-blue" data-dupcheck="닉네임">닉네임 중복확인</button></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-lock icon-15"></i>비밀번호</div><input type="password" placeholder="비밀번호를 입력하세요."></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-shield-check icon-15"></i>비밀번호 확인</div><input type="password" placeholder="비밀번호를 다시 입력하세요."></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-phone icon-15"></i>휴대전화</div><input type="text" placeholder="010-1234-5678"></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-mail icon-15"></i>E-mail</div><input type="text" placeholder="example@naver.com"></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-bank icon-15"></i>은행명</div><select><option>은행을 선택하세요.</option><option>국민은행</option><option>신한은행</option><option>우리은행</option><option>하나은행</option><option>농협은행</option></select></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-card icon-15"></i>계좌번호</div><input type="text" placeholder="계좌번호를 입력하세요. (- 제외)"></div>
+      <div class="reg-row"><div class="lab"><i class="icon icon-user-check icon-15"></i>예금주</div><input type="text" placeholder="예금주명을 입력하세요."></div>
+      <div class="reg-row" data-optional><div class="lab"><i class="icon icon-user-plus icon-15"></i>추천인 아이디</div><input type="text" placeholder="추천인 아이디가 있을 경우 입력하세요."></div>
+      <div class="captcha">
+        <label class="rc-check">
+          <input type="checkbox">
+          <span class="rc-box" aria-hidden="true"></span>
+          <span class="rc-label">사람입니다</span>
+        </label>
+        <div class="rc-brand">
+          <svg class="rc-mark" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.6a8.4 8.4 0 0 1 7.3 4.2" stroke="#4285f4" stroke-width="3" stroke-linecap="round"></path><path d="M18.2 2.2 21.4 7l-5.5.9z" fill="#4285f4"></path><path d="M20.4 12a8.4 8.4 0 0 1-4.2 7.3" stroke="#9aa0a6" stroke-width="3" stroke-linecap="round"></path><path d="M18.6 20.6 13.4 22l1.6-5.4z" fill="#9aa0a6"></path><path d="M9.8 20.2A8.4 8.4 0 0 1 4.4 8.6" stroke="#c5c9ce" stroke-width="3" stroke-linecap="round"></path><path d="M2.2 10.4 4.6 5.3l3.9 3.9z" fill="#c5c9ce"></path></svg>
+          <span class="rc-name">reCAPTCHA</span>
+          <span class="rc-sub">개인정보 보호 · 약관</span>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="index.html" class="btn btn-gray btn-lg">취소</a>
+        <a href="index.html" class="btn btn-blue btn-lg" data-reg-submit>가입</a>
+      </div>
     </div>
-    <div class="reg-banner">회원정보와 출금계좌 정보를 정확하게 입력해 주세요.</div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>이름</div><input type="text" placeholder="홍길동"></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>아이디</div><input type="text" value="test1"><button class="btn btn-sm btn-line-blue">아이디 중복확인</button></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>닉네임</div><input type="text" placeholder="닉네임을 입력하세요."><button class="btn btn-sm btn-line-blue">닉네임 중복확인</button></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>비밀번호</div><input type="password" placeholder="비밀번호를 입력하세요."></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>비밀번호 확인</div><input type="password" placeholder="비밀번호를 다시 입력하세요."></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.6 2z"></path></svg>휴대전화</div><input type="text" placeholder="010-1234-5678"></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>E-mail</div><input type="text" placeholder="example@naver.com"></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18"></path><path d="M6 18v-8M10 18v-8M14 18v-8M18 18v-8"></path><path d="m12 2 10 5H2l10-5z"></path></svg>은행명</div><select><option>은행을 선택하세요.</option><option>국민은행</option><option>신한은행</option><option>우리은행</option><option>하나은행</option><option>농협은행</option></select></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>계좌번호</div><input type="text" placeholder="계좌번호를 입력하세요. (- 제외)"></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>예금주</div><input type="text" placeholder="예금주명을 입력하세요."></div>
-    <div class="reg-row"><div class="lab"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg>추천인 아이디</div><input type="text" placeholder="추천인 아이디가 있을 경우 입력하세요."></div>
-    <div class="captcha">
-      <label class="check"><input type="checkbox"> 사람입니다</label>
-      <span style="font-size:11px;color:var(--muted)">reCAPTCHA<br>개인정보 보호 · 약관</span>
+    <div class="auth-aside aside-right">
+      <p class="stack">GLOBAL<br>MARKETS<br>YOUR<br>TRADE</p>
+      <span class="line"></span>
     </div>
-    <a href="index.html" class="btn btn-blue btn-lg btn-full" style="margin-bottom:10px">가입</a>
-    <a href="index.html" class="btn btn-gray btn-lg btn-full">취소</a>
   </div>
   <div class="auth-sub">© 2026 GLOBALTRADE. ALL RIGHTS RESERVED.</div>
+</div>
+
+<!-- 모달: 중복확인 결과 -->
+<div class="modal" id="modal-alert">
+  <div class="modal-box modal-alert">
+    <span class="alert-ico ico-ok"><i class="icon icon-check icon-26"></i></span>
+    <span class="alert-ico ico-ng"><i class="icon icon-alert icon-26"></i></span>
+    <p class="alert-msg"></p>
+    <button type="button" class="btn btn-blue btn-lg btn-full" data-modal-close>확인</button>
+  </div>
 </div>
 <script src="assets/js/common.js"></script>
 </body>

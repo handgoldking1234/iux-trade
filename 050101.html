@@ -9,50 +9,150 @@
 <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
-<!-- 헤더: 로고 / GNB / 검색 / 유틸 -->
+<!-- 헤더: 로고 / 검색 / 주요지수 / 유틸 -->
 <header class="header">
-  <button class="header-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
-  <a href="010101.html" class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2c3 2.8 4.5 6.2 4.5 10S15 19.2 12 22c-3-2.8-4.5-6.2-4.5-10S9 4.8 12 2z"></path></svg>Global<em>Trade</em></a>
-  <nav class="gnb"><a href="010101.html" class="">거래하기</a><a href="020101.html" class="">내자산</a><a href="030101.html" class="">거래내역</a><a href="040101.html" class="">입출금</a><a href="050102.html" class="active">고객센터</a></nav>
-  <div class="header-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg><input type="text" placeholder="종목명 또는 상품코드를 검색하세요."></div>
+  <button type="button" class="header-menu" aria-label="메뉴"><i class="icon icon-menu icon-22"></i></button>
+  <a href="010101.html" class="logo">
+    <span class="mark"><i class="icon icon-globe icon-22"></i></span>
+    <span class="txt"><b>Global<em>Trade</em></b><small>Global Markets, Your Trade</small></span>
+  </a>
+  <div class="header-search">
+    <input type="text" placeholder="종목명 또는 코드를 검색하세요.">
+    <button type="button" class="btn-find" aria-label="검색"><i class="icon icon-search icon-17"></i></button>
+  </div>
+  <div class="header-index">
+    <div class="idx idx-up"><span class="nm">KOSPI</span><span class="val">2,671.57 <i>▲ 12.34 (+0.46%)</i></span></div>
+    <div class="idx idx-down"><span class="nm">KOSDAQ</span><span class="val">875.36 <i>▼ 3.21 (-0.37%)</i></span></div>
+    <div class="idx idx-up"><span class="nm">NASDAQ</span><span class="val">17,845.21 <i>▲ 85.63 (+0.48%)</i></span></div>
+  </div>
   <div class="header-util">
-    <button class="header-alarm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M10 21a2 2 0 0 0 4 0"></path></svg><span class="dot"></span></button>
-    <div class="header-user"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg><span>홍길동님</span> ▾</div>
-    <a href="index.html" class="btn-logout" style="display:inline-flex;align-items:center">로그아웃</a>
+    <button type="button" class="header-search-btn" aria-label="검색" aria-expanded="false"><i class="icon icon-search icon-20"></i></button>
+    <!-- 알림 드롭다운 -->
+    <div class="header-dd" data-dd="alarm">
+      <button type="button" class="header-alarm" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="알림"><i class="icon icon-bell icon-20"></i><span class="count-badge">3</span></button>
+      <div class="dd-panel dd-alarm">
+        <div class="dd-head"><strong>알림<em class="count">3</em></strong><button type="button" class="dd-allread">모두 읽음</button></div>
+        <ul class="dd-list">
+          <li class="unread">
+            <span class="dd-tag t-fill">체결</span>
+            <div class="dd-txt"><p>나스닥100 12월물 <b>매수 1계약</b>이 23,418.50에 체결되었습니다.</p><time>2026-09-12 09:31</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-cash">입출금</span>
+            <div class="dd-txt"><p>출금신청 <b>1,000,000원</b>이 정상 처리되었습니다.</p><time>2026-09-12 08:47</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-fill">스탑로스</span>
+            <div class="dd-txt"><p>금 12월물 스탑로스 주문이 <b>발동</b>되었습니다.</p><time>2026-09-11 23:12</time></div>
+          </li>
+          <li>
+            <span class="dd-tag t-notice">공지</span>
+            <div class="dd-txt"><p>추석 연휴 해외선물 거래시간 변경 안내</p><time>2026-09-10 14:00</time></div>
+          </li>
+        </ul>
+        <a href="050101.html" class="dd-foot">알림 전체보기</a>
+      </div>
+    </div>
+    <a href="060101.html" class="header-set" aria-label="환경설정"><i class="icon icon-gear icon-20"></i></a>
+    <!-- 사용자 드롭다운 -->
+    <div class="header-dd" data-dd="user">
+      <button type="button" class="header-user" data-dd-toggle aria-haspopup="true" aria-expanded="false"><i class="icon icon-user icon-20"></i><span>test01</span><i class="caret">▾</i></button>
+      <div class="dd-panel dd-user">
+        <div class="dd-user-top">
+          <span class="dd-avatar"><i class="icon icon-user icon-24"></i></span>
+          <div>
+            <strong>test01<em class="dd-grade">VIP</em></strong>
+            <span>test01@globaltrade.co.kr</span>
+          </div>
+        </div>
+        <dl class="dd-meta">
+          <div><dt>계좌번호</dt><dd>1-007051</dd></div>
+          <div><dt>예탁총액</dt><dd>239,179,010 원</dd></div>
+          <div><dt>평가손익</dt><dd class="up">+1,284,500 원</dd></div>
+          <div><dt>최근접속</dt><dd>2026-09-12 08:54</dd></div>
+        </dl>
+        <div class="dd-links">
+          <a href="020101.html">내자산</a>
+          <a href="030101.html">거래내역</a>
+          <a href="040101.html">입출금</a>
+          <a href="060101.html">환경설정</a>
+        </div>
+        <a href="index.html" class="dd-logout">로그아웃</a>
+      </div>
+    </div>
+    <a href="index.html" class="btn-logout">로그아웃</a>
   </div>
 </header>
 <!-- 본문: 사이드바 + 메인 -->
 <div class="layout">
   <aside class="sidebar">
-    <a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 21v-6h6v6"></path></svg><span>대시보드</span></a><a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg><span>거래하기</span></a><a href="020101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg><span>내자산</span></a><a href="030101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg><span>거래내역</span></a><a href="040101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg><span>입출금</span></a><a href="050102.html" class="active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg><span>고객센터</span></a><a href="060101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg><span>환경설정</span></a>
-    <div class="sidebar-clock">실시간 시세 <span class="live">●</span><strong data-clock>00:00:00</strong></div>
+    <nav class="side-nav">
+      <a href="010101.html"><i class="icon icon-check-box icon-18"></i><span>거래하기</span></a>
+      <a href="020101.html"><i class="icon icon-wallet icon-18"></i><span>내자산</span></a>
+      <a href="030101.html"><i class="icon icon-file icon-18"></i><span>거래내역</span></a>
+      <a href="040101.html"><i class="icon icon-swap icon-18"></i><span>입출금</span></a>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-user-box icon-18"></i><span>파생주문</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="010101.html">거래하기</a>
+          <a href="010101.html">차트주문</a>
+        </div>
+      </div>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-pen-box icon-18"></i><span>입출금신청</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금신청</a>
+          <a href="040102.html">출금신청</a>
+          <a href="040103.html">이체신청</a>
+        </div>
+      </div>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-list icon-18"></i><span>입출금내역</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금내역</a>
+          <a href="040102.html">출금내역</a>
+          <a href="040103.html">이체내역</a>
+        </div>
+      </div>
+      <a href="030101.html"><i class="icon icon-clipboard icon-18"></i><span>주문내역</span></a>
+      <a href="030201.html"><i class="icon icon-bar-chart icon-18"></i><span>일별손익</span></a>
+      <a href="050101.html" class="active"><i class="icon icon-bell icon-18"></i><span>공지사항</span></a>
+      <a href="070101.html"><i class="icon icon-chart icon-18"></i><span>차트</span></a>
+      <a href="050102.html"><i class="icon icon-chat icon-18"></i><span>고객상담</span></a>
+      <a href="060101.html"><i class="icon icon-gear icon-18"></i><span>설정</span></a>
+    </nav>
+    <a href="010101.html" class="side-promo">
+      <b>Global<em>Trade</em></b>
+      <span class="en">Trade Beyond Borders</span>
+      <span class="ko">세상을 잇는 글로벌 투자 플랫폼</span>
+    </a>
   </aside>
   <main class="content">
 
 
     <!-- 페이지 타이틀 -->
     <div class="page-head">
-      <div class="tit"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg></span>공지사항 <small>NOTICE</small></div>
-      <button class="btn btn-blue"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg>글쓰기</button>
+      <div class="tit"><span class="ico"><i class="icon icon-megaphone icon-20"></i></span>공지사항 <small>NOTICE</small></div>
+      <a href="050105.html" class="btn btn-blue"><i class="icon icon-pencil icon-15"></i>글쓰기</a>
       <p class="desc">새로운 소식과 중요한 안내사항을 확인하실 수 있습니다.</p>
     </div>
     <!-- 검색 -->
     <div class="card card-body search-bar">
-      <select class="select" style="width:170px"><option>전체</option><option>시스템</option><option>거래안내</option><option>해외선물</option></select>
-      <input class="input" style="flex:1;min-width:180px" placeholder="제목 또는 내용을 검색하세요.">
-      <button class="btn btn-blue btn-input"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg>검색</button>
+      <select class="select"><option>전체</option><option>시스템</option><option>거래안내</option><option>해외선물</option></select>
+      <input class="input keyword" placeholder="제목 또는 내용을 검색하세요.">
+      <button class="btn btn-blue btn-input"><i class="icon icon-search icon-15"></i>검색</button>
     </div>
     <!-- 목록 -->
     <div class="card">
-      <div class="tbl-wrap"><table class="tbl" style="min-width:680px">
-        <thead><tr><th style="width:90px">번호</th><th class="left">제목</th><th style="width:110px">구분</th><th style="width:150px">등록일</th><th style="width:90px">조회수</th><th style="width:70px">첨부</th></tr></thead>
+      <div class="tbl-wrap card-wrap"><table class="tbl board-table card-table">
+        <thead><tr><th class="w-90">번호</th><th class="left">제목</th><th class="w-110">구분</th><th class="w-150">등록일</th><th class="w-90">조회수</th><th class="w-70">첨부</th></tr></thead>
         <tbody>
-          <tr><td class="red" style="font-weight:700"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg> 공지</td><td class="left" style="font-weight:700"><a href="#">[필독] 시스템 점검으로 인한 서비스 일시 중단 안내</a></td><td><span class="badge badge-red">시스템</span></td><td class="muted">2026-09-10 14:30</td><td class="muted">1,245</td><td><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></td></tr><tr><td class="red" style="font-weight:700"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg> 공지</td><td class="left" style="font-weight:700"><a href="#">[안내] 추석 연휴 기간 거래 및 입출금 일정 안내</a></td><td><span class="badge badge-blue">거래안내</span></td><td class="muted">2026-09-08 10:20</td><td class="muted">982</td><td></td></tr><tr><td class="red" style="font-weight:700"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg> 공지</td><td class="left" style="font-weight:700"><a href="#">[안내] 해외선물 야간거래 증거금 변경 안내</a></td><td><span class="badge badge-blue">해외선물</span></td><td class="muted">2026-09-05 09:15</td><td class="muted">856</td><td></td></tr><tr><td class="" style="font-weight:400">102</td><td class="left" style="font-weight:400"><a href="#">신규 서비스 오픈 안내 (모바일 앱 업데이트)</a></td><td><span class="badge badge-green">서비스</span></td><td class="muted">2026-09-03 16:40</td><td class="muted">620</td><td><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></td></tr><tr><td class="" style="font-weight:400">101</td><td class="left" style="font-weight:400"><a href="#">미국 시장 휴장일 안내 (2026년 9월)</a></td><td><span class="badge badge-purple">해외시장</span></td><td class="muted">2026-09-01 11:00</td><td class="muted">513</td><td><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></td></tr><tr><td class="" style="font-weight:400">100</td><td class="left" style="font-weight:400"><a href="#">옵션 만기일 거래 유의사항</a></td><td><span class="badge badge-blue">거래안내</span></td><td class="muted">2026-08-28 14:22</td><td class="muted">672</td><td></td></tr><tr><td class="" style="font-weight:400">99</td><td class="left" style="font-weight:400"><a href="#">HTS 점검 및 업데이트 안내 (9월 3일)</a></td><td><span class="badge badge-red">시스템</span></td><td class="muted">2026-08-25 09:30</td><td class="muted">1,034</td><td><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg></td></tr><tr><td class="" style="font-weight:400">98</td><td class="left" style="font-weight:400"><a href="#">개인정보 처리방침 개정 안내</a></td><td><span class="badge badge-purple">정책</span></td><td class="muted">2026-08-20 15:10</td><td class="muted">421</td><td></td></tr><tr><td class="" style="font-weight:400">97</td><td class="left" style="font-weight:400"><a href="#">스팸 문자 주의 안내 (사칭 피해 예방)</a></td><td><span class="badge badge-orange">보안</span></td><td class="muted">2026-08-18 10:05</td><td class="muted">893</td><td></td></tr><tr><td class="" style="font-weight:400">96</td><td class="left" style="font-weight:400"><a href="#">고객센터 운영시간 변경 안내</a></td><td><span class="badge badge-green">고객지원</span></td><td class="muted">2026-08-12 13:40</td><td class="muted">356</td><td></td></tr>
+          <tr class="is-notice"><td class="red" data-label="번호"><i class="icon icon-megaphone icon-13"></i> 공지</td><td class="left" data-label="제목"><a href="050103.html">[필독] 시스템 점검으로 인한 서비스 일시 중단 안내</a></td><td data-label="구분"><span class="badge badge-red">시스템</span></td><td class="muted" data-label="등록일">2026-09-10 14:30</td><td class="muted" data-label="조회수">1,245</td><td data-label="첨부"><i class="icon icon-clip icon-14"></i></td></tr><tr class="is-notice"><td class="red" data-label="번호"><i class="icon icon-megaphone icon-13"></i> 공지</td><td class="left" data-label="제목"><a href="050103.html">[안내] 추석 연휴 기간 거래 및 입출금 일정 안내</a></td><td data-label="구분"><span class="badge badge-blue">거래안내</span></td><td class="muted" data-label="등록일">2026-09-08 10:20</td><td class="muted" data-label="조회수">982</td><td data-label="첨부"></td></tr><tr class="is-notice"><td class="red" data-label="번호"><i class="icon icon-megaphone icon-13"></i> 공지</td><td class="left" data-label="제목"><a href="050103.html">[안내] 해외선물 야간거래 증거금 변경 안내</a></td><td data-label="구분"><span class="badge badge-blue">해외선물</span></td><td class="muted" data-label="등록일">2026-09-05 09:15</td><td class="muted" data-label="조회수">856</td><td data-label="첨부"></td></tr><tr><td data-label="번호">102</td><td class="left" data-label="제목"><a href="050103.html">신규 서비스 오픈 안내 (모바일 앱 업데이트)</a></td><td data-label="구분"><span class="badge badge-green">서비스</span></td><td class="muted" data-label="등록일">2026-09-03 16:40</td><td class="muted" data-label="조회수">620</td><td data-label="첨부"><i class="icon icon-clip icon-14"></i></td></tr><tr><td data-label="번호">101</td><td class="left" data-label="제목"><a href="050103.html">미국 시장 휴장일 안내 (2026년 9월)</a></td><td data-label="구분"><span class="badge badge-purple">해외시장</span></td><td class="muted" data-label="등록일">2026-09-01 11:00</td><td class="muted" data-label="조회수">513</td><td data-label="첨부"><i class="icon icon-clip icon-14"></i></td></tr><tr><td data-label="번호">100</td><td class="left" data-label="제목"><a href="050103.html">옵션 만기일 거래 유의사항</a></td><td data-label="구분"><span class="badge badge-blue">거래안내</span></td><td class="muted" data-label="등록일">2026-08-28 14:22</td><td class="muted" data-label="조회수">672</td><td data-label="첨부"></td></tr><tr><td data-label="번호">99</td><td class="left" data-label="제목"><a href="050103.html">HTS 점검 및 업데이트 안내 (9월 3일)</a></td><td data-label="구분"><span class="badge badge-red">시스템</span></td><td class="muted" data-label="등록일">2026-08-25 09:30</td><td class="muted" data-label="조회수">1,034</td><td data-label="첨부"><i class="icon icon-clip icon-14"></i></td></tr><tr><td data-label="번호">98</td><td class="left" data-label="제목"><a href="050103.html">개인정보 처리방침 개정 안내</a></td><td data-label="구분"><span class="badge badge-purple">정책</span></td><td class="muted" data-label="등록일">2026-08-20 15:10</td><td class="muted" data-label="조회수">421</td><td data-label="첨부"></td></tr><tr><td data-label="번호">97</td><td class="left" data-label="제목"><a href="050103.html">스팸 문자 주의 안내 (사칭 피해 예방)</a></td><td data-label="구분"><span class="badge badge-orange">보안</span></td><td class="muted" data-label="등록일">2026-08-18 10:05</td><td class="muted" data-label="조회수">893</td><td data-label="첨부"></td></tr><tr><td data-label="번호">96</td><td class="left" data-label="제목"><a href="050103.html">고객센터 운영시간 변경 안내</a></td><td data-label="구분"><span class="badge badge-green">고객지원</span></td><td class="muted" data-label="등록일">2026-08-12 13:40</td><td class="muted" data-label="조회수">356</td><td data-label="첨부"></td></tr>
         </tbody>
       </table></div>
       <div class="list-foot">
-        <span class="total-count">총 102건</span>
-        <div class="paging"><button>«</button><button>‹</button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>›</button><button>»</button></div>
+        <span class="total-count">총 <b class="hl-num">102</b>건</span>
+        <div class="paging"><button type="button" class="ico" aria-label="첫 페이지"><i class="icon icon-chevs-left icon-16"></i></button><button type="button" class="ico" aria-label="이전 페이지"><i class="icon icon-chev-left icon-16"></i></button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>5</button><button type="button" class="ico" aria-label="다음 페이지"><i class="icon icon-chev-right icon-16"></i></button><button type="button" class="ico" aria-label="마지막 페이지"><i class="icon icon-chevs-right icon-16"></i></button></div>
       </div>
     </div>
   </main>

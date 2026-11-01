@@ -9,43 +9,143 @@
 <link rel="stylesheet" href="assets/css/common.css">
 </head>
 <body>
-<!-- 헤더: 로고 / GNB / 검색 / 유틸 -->
+<!-- 헤더: 로고 / 검색 / 주요지수 / 유틸 -->
 <header class="header">
-  <button class="header-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
-  <a href="010101.html" class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2c3 2.8 4.5 6.2 4.5 10S15 19.2 12 22c-3-2.8-4.5-6.2-4.5-10S9 4.8 12 2z"></path></svg>Global<em>Trade</em></a>
-  <nav class="gnb"><a href="010101.html" class="">거래하기</a><a href="020101.html" class="">내자산</a><a href="030101.html" class="">거래내역</a><a href="040101.html" class="active">입출금</a><a href="050102.html" class="">고객센터</a></nav>
-  <div class="header-search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4-4"></path></svg><input type="text" placeholder="종목명 또는 상품코드를 검색하세요."></div>
+  <button type="button" class="header-menu" aria-label="메뉴"><i class="icon icon-menu icon-22"></i></button>
+  <a href="010101.html" class="logo">
+    <span class="mark"><i class="icon icon-globe icon-22"></i></span>
+    <span class="txt"><b>Global<em>Trade</em></b><small>Global Markets, Your Trade</small></span>
+  </a>
+  <div class="header-search">
+    <input type="text" placeholder="종목명 또는 코드를 검색하세요.">
+    <button type="button" class="btn-find" aria-label="검색"><i class="icon icon-search icon-17"></i></button>
+  </div>
+  <div class="header-index">
+    <div class="idx idx-up"><span class="nm">KOSPI</span><span class="val">2,671.57 <i>▲ 12.34 (+0.46%)</i></span></div>
+    <div class="idx idx-down"><span class="nm">KOSDAQ</span><span class="val">875.36 <i>▼ 3.21 (-0.37%)</i></span></div>
+    <div class="idx idx-up"><span class="nm">NASDAQ</span><span class="val">17,845.21 <i>▲ 85.63 (+0.48%)</i></span></div>
+  </div>
   <div class="header-util">
-    <button class="header-alarm"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M10 21a2 2 0 0 0 4 0"></path></svg><span class="dot"></span></button>
-    <div class="header-user"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"></path></svg><span>홍길동님</span> ▾</div>
-    <a href="index.html" class="btn-logout" style="display:inline-flex;align-items:center">로그아웃</a>
+    <button type="button" class="header-search-btn" aria-label="검색" aria-expanded="false"><i class="icon icon-search icon-20"></i></button>
+    <!-- 알림 드롭다운 -->
+    <div class="header-dd" data-dd="alarm">
+      <button type="button" class="header-alarm" data-dd-toggle aria-haspopup="true" aria-expanded="false" aria-label="알림"><i class="icon icon-bell icon-20"></i><span class="count-badge">3</span></button>
+      <div class="dd-panel dd-alarm">
+        <div class="dd-head"><strong>알림<em class="count">3</em></strong><button type="button" class="dd-allread">모두 읽음</button></div>
+        <ul class="dd-list">
+          <li class="unread">
+            <span class="dd-tag t-fill">체결</span>
+            <div class="dd-txt"><p>나스닥100 12월물 <b>매수 1계약</b>이 23,418.50에 체결되었습니다.</p><time>2026-09-12 09:31</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-cash">입출금</span>
+            <div class="dd-txt"><p>출금신청 <b>1,000,000원</b>이 정상 처리되었습니다.</p><time>2026-09-12 08:47</time></div>
+          </li>
+          <li class="unread">
+            <span class="dd-tag t-fill">스탑로스</span>
+            <div class="dd-txt"><p>금 12월물 스탑로스 주문이 <b>발동</b>되었습니다.</p><time>2026-09-11 23:12</time></div>
+          </li>
+          <li>
+            <span class="dd-tag t-notice">공지</span>
+            <div class="dd-txt"><p>추석 연휴 해외선물 거래시간 변경 안내</p><time>2026-09-10 14:00</time></div>
+          </li>
+        </ul>
+        <a href="050101.html" class="dd-foot">알림 전체보기</a>
+      </div>
+    </div>
+    <a href="060101.html" class="header-set" aria-label="환경설정"><i class="icon icon-gear icon-20"></i></a>
+    <!-- 사용자 드롭다운 -->
+    <div class="header-dd" data-dd="user">
+      <button type="button" class="header-user" data-dd-toggle aria-haspopup="true" aria-expanded="false"><i class="icon icon-user icon-20"></i><span>test01</span><i class="caret">▾</i></button>
+      <div class="dd-panel dd-user">
+        <div class="dd-user-top">
+          <span class="dd-avatar"><i class="icon icon-user icon-24"></i></span>
+          <div>
+            <strong>test01<em class="dd-grade">VIP</em></strong>
+            <span>test01@globaltrade.co.kr</span>
+          </div>
+        </div>
+        <dl class="dd-meta">
+          <div><dt>계좌번호</dt><dd>1-007051</dd></div>
+          <div><dt>예탁총액</dt><dd>239,179,010 원</dd></div>
+          <div><dt>평가손익</dt><dd class="up">+1,284,500 원</dd></div>
+          <div><dt>최근접속</dt><dd>2026-09-12 08:54</dd></div>
+        </dl>
+        <div class="dd-links">
+          <a href="020101.html">내자산</a>
+          <a href="030101.html">거래내역</a>
+          <a href="040101.html">입출금</a>
+          <a href="060101.html">환경설정</a>
+        </div>
+        <a href="index.html" class="dd-logout">로그아웃</a>
+      </div>
+    </div>
+    <a href="index.html" class="btn-logout">로그아웃</a>
   </div>
 </header>
 <!-- 본문: 사이드바 + 메인 -->
 <div class="layout">
   <aside class="sidebar">
-    <a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 21v-6h6v6"></path></svg><span>대시보드</span></a><a href="010101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg><span>거래하기</span></a><a href="020101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg><span>내자산</span></a><a href="030101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg><span>거래내역</span></a><a href="040101.html" class="active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg><span>입출금</span></a><a href="050102.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3v-7a9 9 0 0 1 18 0v7h-3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg><span>고객센터</span></a><a href="060101.html" class=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg><span>환경설정</span></a>
-    <div class="sidebar-clock">실시간 시세 <span class="live">●</span><strong data-clock>00:00:00</strong></div>
+    <nav class="side-nav">
+      <a href="010101.html"><i class="icon icon-check-box icon-18"></i><span>거래하기</span></a>
+      <a href="020101.html"><i class="icon icon-wallet icon-18"></i><span>내자산</span></a>
+      <a href="030101.html"><i class="icon icon-file icon-18"></i><span>거래내역</span></a>
+      <a href="040101.html"><i class="icon icon-swap icon-18"></i><span>입출금</span></a>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-user-box icon-18"></i><span>파생주문</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="010101.html">거래하기</a>
+          <a href="010101.html">차트주문</a>
+        </div>
+      </div>
+      <div class="side-group open">
+        <button type="button" class="side-toggle" aria-expanded="true"><i class="icon icon-pen-box icon-18"></i><span>입출금신청</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금신청</a>
+          <a href="040102.html" class="active">출금신청</a>
+          <a href="040103.html">이체신청</a>
+        </div>
+      </div>
+      <div class="side-group">
+        <button type="button" class="side-toggle" aria-expanded="false"><i class="icon icon-list icon-18"></i><span>입출금내역</span><i class="arw"><i class="icon icon-chev-down icon-15"></i></i></button>
+        <div class="side-sub">
+          <a href="040101.html">입금내역</a>
+          <a href="040102.html">출금내역</a>
+          <a href="040103.html">이체내역</a>
+        </div>
+      </div>
+      <a href="030101.html"><i class="icon icon-clipboard icon-18"></i><span>주문내역</span></a>
+      <a href="030201.html"><i class="icon icon-bar-chart icon-18"></i><span>일별손익</span></a>
+      <a href="050101.html"><i class="icon icon-bell icon-18"></i><span>공지사항</span></a>
+      <a href="070101.html"><i class="icon icon-chart icon-18"></i><span>차트</span></a>
+      <a href="050102.html"><i class="icon icon-chat icon-18"></i><span>고객상담</span></a>
+      <a href="060101.html"><i class="icon icon-gear icon-18"></i><span>설정</span></a>
+    </nav>
+    <a href="010101.html" class="side-promo">
+      <b>Global<em>Trade</em></b>
+      <span class="en">Trade Beyond Borders</span>
+      <span class="ko">세상을 잇는 글로벌 투자 플랫폼</span>
+    </a>
   </aside>
   <main class="content">
 
 
     <!-- 페이지 타이틀 -->
     <div class="page-head">
-      <div class="tit"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg></span>입출금신청 <small>FUND TRANSFER</small></div>
-      <button class="btn btn-line">? 이용안내</button>
+      <div class="tit"><span class="ico"><i class="icon icon-up-down icon-20"></i></span>입출금신청 <small>FUND TRANSFER</small></div>
+      <button type="button" class="btn btn-line"><i class="icon icon-help icon-15"></i>이용안내</button>
       <p class="desc">계좌로 출금 신청을 할 수 있습니다.</p>
     </div>
 
     <!-- 입금/출금/이체 탭 -->
     <div class="tab-links">
-      <a href="040101.html" style="display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>입금</a>
-      <a href="040102.html" style="display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-left:1px solid var(--line);background:var(--blue);color:#fff"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg>출금</a>
-      <a href="040103.html" style="display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-left:1px solid var(--line);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"></path><path d="M20 7H4"></path><path d="m8 21-4-4 4-4"></path><path d="M4 17h16"></path></svg>이체</a>
+      <a href="040101.html"><i class="icon icon-tray-down icon-16"></i>입금</a>
+      <a href="040102.html" class="active"><i class="icon icon-tray-up icon-16"></i>출금</a>
+      <a href="040103.html"><i class="icon icon-swap icon-16"></i>이체</a>
     </div>
     <!-- 신청 폼 -->
     <div class="card">
-      <div class="card-head"><span style="width:38px;height:38px;border-radius:9px;background:var(--blue-bg);color:var(--blue);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg></span>출금신청 <small class="muted" style="font-weight:400;letter-spacing:1px">WITHDRAW</small><span class="muted" style="font-weight:400;font-size:13px;margin-left:8px">계좌에서 출금을 요청하는 신청입니다.</span></div>
+      <div class="card-head"><span class="card-ico"><i class="icon icon-up-down icon-18"></i></span>출금신청 <small class="eng">WITHDRAW</small><span class="sub">계좌에서 출금을 요청하는 신청입니다.</span></div>
       <div class="card-body">
         <div class="form-grid">
 
@@ -53,14 +153,14 @@
       <div class="field"><label>보유금액</label><div class="input-unit"><input class="input" value="239,197,328" readonly><span class="unit">원</span></div></div>
           <div class="field"><label>신청금액 <span class="req">*</span></label><div class="input-unit"><input class="input" value="0"><span class="unit">원</span></div><p class="help">신청 금액은 보유금액 내에서 가능합니다.</p></div>
 
-      <div class="field"><label>금액 설정</label>
+      <div class="field"><label>출금금액 설정</label>
         <div class="quick-amounts">
-          <button class="btn btn-line-blue btn-sm">1만원</button><button class="btn btn-line-blue btn-sm">5만원</button><button class="btn btn-line-blue btn-sm">10만원</button>
-          <button class="btn btn-line-blue btn-sm">50만원</button><button class="btn btn-line-blue btn-sm">100만원</button><button class="btn btn-line-blue btn-sm">500만원</button>
+          <button type="button" class="btn btn-line-blue btn-sm">1만원</button><button type="button" class="btn btn-line-blue btn-sm">5만원</button><button type="button" class="btn btn-line-blue btn-sm">10만원</button>
+          <button type="button" class="btn btn-line-blue btn-sm">50만원</button><button type="button" class="btn btn-line-blue btn-sm">100만원</button><button type="button" class="btn btn-line-blue btn-sm">500만원</button>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-          <button class="btn btn-line-yellow btn-sm">전액</button>
-          <button class="btn btn-line-red btn-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>초기화</button>
+        <div class="quick-amounts-etc">
+          <button type="button" class="btn btn-line-yellow btn-sm">전액</button>
+          <button type="button" class="btn btn-line-red btn-sm"><i class="icon icon-reset icon-14"></i>초기화</button>
         </div>
       </div>
 
@@ -69,9 +169,9 @@
       <div class="field"><label>계좌번호 <span class="req">*</span></label><div class="input-group"><input class="input" placeholder="- 없이 입력하세요."><button class="btn btn-line-blue">계좌확인</button></div></div>
       <div class="field"><label>예금주 <span class="req">*</span></label><input class="input" value="test1" readonly><p class="help">※ 예금주는 가입자 본인 명의 계좌만 가능합니다.</p></div>
       <div class="field"><label>전화번호</label><input class="input" placeholder="010-0000-0000"></div>
-      <div class="field" style="grid-column:1/-1"><label>출금사유</label><textarea class="textarea" placeholder="출금 사유를 입력해주세요. (선택사항)"></textarea><p class="help" style="text-align:right">0 / 200</p></div>
+      <div class="field field-full"><label>출금사유</label><textarea class="textarea" placeholder="출금 사유를 입력해주세요. (선택사항)"></textarea><p class="help help-right"><b class="hl-num">0</b> / 200</p></div>
         </div>
-        <button class="btn btn-blue btn-lg btn-full" style="margin-top:8px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="m21 8-4-4-4 4"></path><path d="M17 4v16"></path></svg>출금신청</button>
+        <button class="btn btn-blue btn-lg btn-full fund-submit"><i class="icon icon-up-down icon-17"></i>출금신청</button>
       </div>
     </div>
   </main>
